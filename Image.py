@@ -7,8 +7,8 @@ import sys
 import os
 import numpy as np
 import cv2
-from plant_detection.Capture import Capture
-from plant_detection.CeleryPy import log
+from Capture import Capture
+from CeleryPy import log
 
 CIRCLE_LINEWIDTH = 3
 CONTOUR_LINEWIDTH = 2
