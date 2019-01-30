@@ -7,7 +7,7 @@ import os
 import copy
 import json
 import cv2
-from plant_detection import ENV
+import ENV
 
 
 class Parameters(object):
