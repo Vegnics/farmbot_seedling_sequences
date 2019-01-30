@@ -8,8 +8,8 @@ import json
 import base64
 import requests
 import numpy as np
-from plant_detection import CeleryPy
-from plant_detection import ENV
+import CeleryPy
+import ENV
 
 
 class DB(object):
@@ -49,7 +49,7 @@ class DB(object):
                     encoded_payload).decode('utf-8')
                 server = json.loads(json_payload)['iss']
             except:  # noqa pylint:disable=W0702
-                server = '//my.farmbot.io:443'
+                server = '//192.168.0.6:3000'
             api_info['url'] = 'http{}:{}/api/'.format(
                 's' if ':443' in server else '', server)
         elif api == 'farmware':
