@@ -1,6 +1,6 @@
 
 {
- "package": "capture",
+ "package": "LOGGING",
  "language": "python",
  "author": "Paulo Linares",
  "description": "Basics movements",
@@ -9,5 +9,5 @@
  "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/manifest.json",
  "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
  "executable": "python",
- "args": ["calibrate_camera-master/Capture.py"]
+ "args": ["calibrate_camera-master/cam_cal_script.py"]
 }
