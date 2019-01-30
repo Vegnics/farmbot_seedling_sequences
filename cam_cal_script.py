@@ -5,5 +5,5 @@ from DB import DB
 import Capture 
 import Image
 x='daleeeeee'
-log(x, message_type='error', title='FUNCO')
+log(print(x), message_type='error', title='FUNCO')
 
