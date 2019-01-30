@@ -8,8 +8,8 @@ import os
 from time import time, sleep
 from subprocess import call
 import cv2
-from plant_detection import ENV
-from plant_detection.CeleryPy import log
+import ENV
+from CeleryPy import log
 
 CAMERA = ENV.load('camera', get_json=False)
 if CAMERA is None:
