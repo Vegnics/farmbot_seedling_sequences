@@ -5,5 +5,5 @@ import Capture
 import Image
 
 Image.capture()
-log('No te pases man', message_type='error', title='FUNCO')
+log(getcoordinates(), message_type='error', title='FUNCO')
 
