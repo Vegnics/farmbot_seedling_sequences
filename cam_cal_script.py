@@ -5,6 +5,6 @@ from DB import DB
 import Capture 
 import Image
 
-
-log(DB.getcoordinates(), message_type='error', title='FUNCO')
+X=DB.getcoordinates()
+log('FUNCAAAAAAA', message_type='error', title='FUNCO')
 
