@@ -4,7 +4,6 @@ from CeleryPy import log
 from DB import DB
 import Capture 
 import Image
-
-X=DB().getcoordinates()
-log(X, message_type='error', title='FUNCO')
+[x,y,z]=DB().getcoordinates(test_coordinates=True)
+log('funcaaaaa', message_type='error', title='FUNCO')
 
