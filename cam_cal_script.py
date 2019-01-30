@@ -1,10 +1,6 @@
 import os
 import sys
+from CeleryPy import log
 
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
-from PlantDetection import PlantDetection
-
-if __name__ == "__main__":
-    PD = PlantDetection(coordinates=True, app=True)
-PD.calibrate()
+log('No te pases man', message_type='error', title='FUNCO')
