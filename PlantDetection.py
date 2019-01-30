@@ -6,12 +6,12 @@ Detects green plants on a dirt background
 """
 import sys
 import os
-from plant_detection.P2C import Pixel2coord
-from plant_detection.Image import Image
-from plant_detection.Parameters import Parameters
-from plant_detection.DB import DB
-from plant_detection.Capture import Capture
-from plant_detection.CeleryPy import log
+from P2C import Pixel2coord
+from Image import Image
+from Parameters import Parameters
+from DB import DB
+from Capture import Capture
+from CeleryPy import log
 
 
 class PlantDetection(object):
