@@ -1,9 +1,10 @@
 import os
 import sys
 from CeleryPy import log
+from DB import DB
 import Capture 
 import Image
 
-Image.capture()
-log(getcoordinates(), message_type='error', title='FUNCO')
+
+log(DB.getcoordinates(), message_type='error', title='FUNCO')
 
