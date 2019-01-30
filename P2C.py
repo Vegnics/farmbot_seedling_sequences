@@ -4,11 +4,11 @@ import sys
 import os
 import json
 import numpy as np
-from plant_detection.Parameters import Parameters
-from plant_detection.Image import Image
-from plant_detection.DB import DB
-from plant_detection import ENV
-from plant_detection.CeleryPy import log
+from Parameters import Parameters
+from Image import Image
+from DB import DB
+import ENV
+from CeleryPy import log
 
 
 def _round(number, places):
