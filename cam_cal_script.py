@@ -3,10 +3,8 @@ import sys
 from CeleryPy import log
 from CeleryPy import send_message
 from DB import DB
-import requests
-import json
-datab=DB()
-y=datab.get_image(50)
+x=DB()
+y=x.get_image(50)
 #y=x._get_bot_state()
 #y=dict(y)['user_env']['camera']
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
