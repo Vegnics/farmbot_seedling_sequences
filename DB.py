@@ -114,7 +114,8 @@ class DB(object):
         """Download an image from the FarmBot Web App API."""
         response = self.api_get('images/' + str(image_id))
         if response.status_code == 200:
-            stringer=print(response)
+            stringer=str(response)
+            send_message(message=stringer, message_type='success', channel='toast')
             image_json = response.json()
             image_url = image_json['attachment_url']
             try:
