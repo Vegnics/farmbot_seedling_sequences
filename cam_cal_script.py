@@ -7,5 +7,4 @@ import Image
 import requests
 x=DB()
 y=x.api_get('peripherals/')
-##log(y, message_type='error', title='FUNCO')
-print(y)
+log(print(y), message_type='error', title='FUNCO')
