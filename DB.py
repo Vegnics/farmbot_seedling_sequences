@@ -126,8 +126,9 @@ class DB(object):
             #except IOError:
              #   directory = '/tmp/'
             #else:
-            directory = self.dir
-            image_filename = directory + str(image_id) + '.jpg'
+            #directory = self.dir
+            directory = '/tmp/images'
+            image_filename = directory + str(1549133011) + '.jpg'
             self._download_image_from_url(image_filename, image_url)
             #self.coordinates = list([int(image_json['meta']['x']),
              #                        int(image_json['meta']['y']),
