@@ -8,4 +8,4 @@ import requests
 x=DB()
 #y=x.api_get('peripherals/')
 y=x._api_info('app')
-log(print(y), message_type='error', title='FUNCO')
+log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
