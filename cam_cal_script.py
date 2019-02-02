@@ -14,7 +14,7 @@ def upload_path(filename):
 return path
 
 x=DB()
-y=x.get_image(50)
+y=x.get_image(52)
 filename_path = upload_path(y)
 retcode = call(["raspistill", "-w", "640", "-h", "480", "-o", filename_path])
 #y=x._get_bot_state()
