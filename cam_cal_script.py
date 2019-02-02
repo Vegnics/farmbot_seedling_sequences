@@ -4,7 +4,7 @@ from CeleryPy import log
 from CeleryPy import send_message
 from DB import DB
 import json
-#from subprocess import call
+import requests
 
 x=DB()
 response = x.api_get('images/' + str(52))
@@ -15,7 +15,9 @@ response = x.api_get('images/' + str(52))
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
 #z=str(z)
 send_message(message=str(response.json()), message_type='success', channel='toast')
-z=os.path.dirname(os.path.realpath(__file__)) + os.sep
-send_message(message=z, message_type='success', channel='toast')
-y=x.get_image(52)
+#z=os.path.dirname(os.path.realpath(__file__)) + os.sep
+#send_message(message=z, message_type='success', channel='toast')
+y = requests.get(url, stream=True)
+send_message(message=str(y), message_type='success', channel='toast')
+#y=x.get_image(52)
 
