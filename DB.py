@@ -118,15 +118,15 @@ class DB(object):
         if response.status_code == 200:
             image_json = response.json()
             image_url = image_json['attachment_url']
-            try:
-                testfilename = self.dir + 'test_write.try_to_write'
-                testfile = open(testfilename, "w")
-                testfile.close()
-                os.remove(testfilename)
-            except IOError:
-                directory = '/tmp/'
-            else:
-                directory = self.dir
+           # try:
+            #    testfilename = self.dir + 'test_write.try_to_write'
+             #   testfile = open(testfilename, "w")
+              #  testfile.close()
+               # os.remove(testfilename)
+            #except IOError:
+             #   directory = '/tmp/'
+            #else:
+            directory = self.dir
             image_filename = directory + str(image_id) + '.jpg'
             self._download_image_from_url(image_filename, image_url)
             #self.coordinates = list([int(image_json['meta']['x']),
