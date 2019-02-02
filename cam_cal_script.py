@@ -6,5 +6,6 @@ import Capture
 import Image
 import requests
 x=DB()
-y=x.api_get('peripherals/')
+#y=x.api_get('peripherals/')
+y=x._get_bot_state()
 log(print(y), message_type='error', title='FUNCO')
