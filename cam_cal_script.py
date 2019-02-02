@@ -9,6 +9,6 @@ import requests
 x=DB()
 #y=x.api_get('peripherals/')
 y=x._get_bot_state()
-y=str(y)
+y=dict(y)['user_env']['camera']
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
 send_message(message=y, message_type='success', channel='toast')
