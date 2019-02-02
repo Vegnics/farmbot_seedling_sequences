@@ -18,7 +18,7 @@ img_json=response.json()
 send_message(message=str(img_json), message_type='success', channel='toast')
 #z=os.path.dirname(os.path.realpath(__file__)) + os.sep
 #send_message(message=z, message_type='success', channel='toast')
-image_url = img_json['attachment_url']
+image_url = 'smb://192.168.1.106'+img_json['attachment_url']
 #y = requests.get(image_url, stream=True)
 send_message(message=str(image_url), message_type='success', channel='toast')
 #y=x.get_image(52)
