@@ -7,9 +7,9 @@ import Capture
 import Image
 import requests
 x=DB()
-#y=x.api_get('peripherals/')
+y=x.api_get('images')
 #y=x._get_bot_state()
 #y=dict(y)['user_env']['camera']
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
-y=str(x.get_image('1549128321'))
+y=str(y)
 send_message(message=y, message_type='success', channel='toast')
