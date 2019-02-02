@@ -9,5 +9,6 @@ import requests
 x=DB()
 #y=x.api_get('peripherals/')
 y=x._api_info('app')
+y=y['token']
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
 send_message(message=y, message_type='success', channel='toast')
