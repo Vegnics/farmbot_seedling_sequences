@@ -1,12 +1,11 @@
 import os
 import sys
-from CeleryPy import log
-from DB import DB
-import Capture 
-import Image
-x=DB.getcoordinates()
-y=str(object=x,encoding='ascii', errors='ignore')
-log(y, message_type='error', title='FUNCO')
-#log_message = '[{y}]'.format(y=y)
-#send_message(log_message,'error')
-
+from plant_detection.CeleryPy import log
+from plant_detection.DB import DB
+import plant_detection.Capture
+import plant_detection.Image
+import requests
+x=DB()
+y=x.api_get('peripherals/')
+##log(y, message_type='error', title='FUNCO')
+print(y)
