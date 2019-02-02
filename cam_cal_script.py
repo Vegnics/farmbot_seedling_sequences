@@ -1,9 +1,9 @@
 import os
 import sys
-from plant_detection.CeleryPy import log
-from plant_detection.DB import DB
-import plant_detection.Capture
-import plant_detection.Image
+from CeleryPy import log
+from DB import DB
+import Capture
+import Image
 import requests
 x=DB()
 y=x.api_get('peripherals/')
