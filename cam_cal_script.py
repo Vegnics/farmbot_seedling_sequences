@@ -14,4 +14,4 @@ x=DB()
 #y=dict(y)['user_env']['camera']
 #log(print(os.environ['API_TOKEN']), message_type='error', title='FUNCO')
 #z=str(z)
-send_message(message=str(help(subprocess.call)), message_type='success', channel='toast')
+send_message(message=str(help('subprocess.call')), message_type='success', channel='toast')
