@@ -3,7 +3,7 @@ import sys
 from CeleryPy import log
 from CeleryPy import send_message
 from DB import DB
-x=DB()
+#x=DB()
 #y=x.get_image(50)
 #y=x._get_bot_state()
 #y=dict(y)['user_env']['camera']
