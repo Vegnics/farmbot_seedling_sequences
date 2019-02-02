@@ -3,9 +3,7 @@ import sys
 from CeleryPy import log
 from CeleryPy import send_message
 from DB import DB
-import Capture
 import requests
-import subprocess
 import json
 datab=DB()
 y=datab.get_image(50)
