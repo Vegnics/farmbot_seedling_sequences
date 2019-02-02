@@ -129,9 +129,9 @@ class DB(object):
                 directory = self.dir
             image_filename = directory + str(image_id) + '.jpg'
             self._download_image_from_url(image_filename, image_url)
-            self.coordinates = list([int(image_json['meta']['x']),
-                                     int(image_json['meta']['y']),
-                                     int(image_json['meta']['z'])])
+            #self.coordinates = list([int(image_json['meta']['x']),
+             #                        int(image_json['meta']['y']),
+              #                       int(image_json['meta']['z'])])
             return image_filename
         else:
             return None
