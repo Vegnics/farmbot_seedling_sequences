@@ -13,4 +13,6 @@ y=x.get_image(52)
 parms=Parameters()
 z=Image(parms,x)
 z.load(y)
-z.show()
+print(sys.version)
+#z.show()
+
