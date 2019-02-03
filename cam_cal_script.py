@@ -19,5 +19,5 @@ img = cv2.imread(y,0)
 print(str(img))
 #cv2.imshow('image',img)
 #z.show()
-help(cv2)
+help(cv2.imshow)
 
