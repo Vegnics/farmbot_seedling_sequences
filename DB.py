@@ -117,7 +117,8 @@ class DB(object):
         send_message(message=stringer, message_type='success', channel='toast')
         if response.status_code == 200:
             image_json = response.json()
-            image_url = image_json['attachment_url']
+            attachment=image_json['attachment_url']
+            image_url = 'http://192.168.1.106:8000'+attachment[0:-11]
            # try:
             #    testfilename = self.dir + 'test_write.try_to_write'
              #   testfile = open(testfilename, "w")
@@ -128,7 +129,7 @@ class DB(object):
             #else:
             #directory = self.dir
             directory = '/tmp/images'
-            image_filename = directory + str(1549133011) + '.jpg'
+            image_filename = directory + str(154913301111) + '.jpg'
             self._download_image_from_url(image_filename, image_url)
             #self.coordinates = list([int(image_json['meta']['x']),
              #                        int(image_json['meta']['y']),
