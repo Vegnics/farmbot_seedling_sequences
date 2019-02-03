@@ -16,6 +16,7 @@ z=Image(parms,x)
 z.load(y)
 print(cv2.__version__)
 img = cv2.imread('y',0)
-cv2.imshow('image',img)
+print(img)
+#cv2.imshow('image',img)
 #z.show()
 
