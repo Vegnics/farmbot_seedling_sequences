@@ -20,7 +20,7 @@ send_message(message=str(img_json), message_type='success', channel='toast')
 #send_message(message=z, message_type='success', channel='toast')
 attachment=img_json['attachment_url']
 image_url = 'http://192.168.1.106:8000'+attachment[0:-11]
-image_name=img_json['']
+image_name=img_json['meta']['name']
 send_message(message=str(image_url), message_type='success', channel='toast')
 #y = requests.get(image_url, stream=True)
 y=x.get_image(52)
