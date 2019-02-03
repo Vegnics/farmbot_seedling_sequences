@@ -118,7 +118,7 @@ class DB(object):
             attachment=image_json['attachment_url']
             name=image_json['meta']['name']
             image_url = 'http://192.168.1.106:8000'+attachment[0:-11]
-            image_filename = name
+            image_filename = name + '.jpg'
             self._download_image_from_url(image_filename, image_url)
             #self.coordinates = list([int(image_json['meta']['x']),
              #                        int(image_json['meta']['y']),
