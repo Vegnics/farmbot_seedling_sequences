@@ -114,7 +114,7 @@ class DB(object):
         """Download an image from the FarmBot Web App API."""
         response = self.api_get('images/' + str(image_id))
         stringer=str(response)
-        send_message(message=stringer, message_type='success', channel='toast')
+        CeleryPy.send_message(message=stringer, message_type='success', channel='toast')
         if response.status_code == 200:
             image_json = response.json()
             attachment=image_json['attachment_url']
