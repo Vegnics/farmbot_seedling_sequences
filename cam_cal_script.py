@@ -7,12 +7,13 @@ from Image import Image
 import json
 from Parameters import Parameters
 import requests
+import cv2
 
 x=DB()
 y=x.get_image(52)
 parms=Parameters()
 z=Image(parms,x)
 z.load(y)
-print(sys.version)
+print(cv2.__version__)
 #z.show()
 
