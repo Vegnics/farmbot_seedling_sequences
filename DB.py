@@ -129,7 +129,7 @@ class DB(object):
             #else:
             #directory = self.dir
             directory = '/tmp/images'
-            image_filename = directory + str(154913301111) + '.jpg'
+            image_filename = directory + attachment[-10:] + '.jpg'
             self._download_image_from_url(image_filename, image_url)
             #self.coordinates = list([int(image_json['meta']['x']),
              #                        int(image_json['meta']['y']),
