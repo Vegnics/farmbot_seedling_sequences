@@ -18,7 +18,8 @@ img_json=response.json()
 send_message(message=str(img_json), message_type='success', channel='toast')
 #z=os.path.dirname(os.path.realpath(__file__)) + os.sep
 #send_message(message=z, message_type='success', channel='toast')
-image_url = 'http://192.168.1.106:8000'+img_json['attachment_url']
+attachment=img_json['attachment_url']
+image_url = 'http://192.168.1.106:8000'+attachment[0:-11]
 send_message(message=str(image_url), message_type='success', channel='toast')
 y = requests.get(image_url, stream=True)
 #y=x.get_image(52)
