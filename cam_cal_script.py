@@ -18,7 +18,7 @@ import numpy as np
 #z.load(y)
 #print(cv2.__version__)
 img1 = cv2.imread('/tmp/images/1549669210.jpg',1)
-img2 = cv2.resize(img1,(640,480),interpolation = 3)
+#img2 = cv2.resize(img1,(640,480),interpolation = 3)
 
 
 send_message(message='Hello World!', message_type='success', channel='toast')
