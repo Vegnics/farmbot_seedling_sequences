@@ -50,16 +50,9 @@ class Capture(object):
 
     def save(self, filename_only=False, add_timestamp=True):
         """Save captured image."""
-        directory = os.path.dirname(os.path.realpath(__file__)) + os.sep
-        try:
-            testfilename = directory + 'test_write.try_to_write'
-            testfile = open(testfilename, "w")
-            testfile.close()
-            os.remove(testfilename)
-        except IOError:
-            directory = '/tmp/images/'
+        directory = '/tmp/images/'
         if add_timestamp:
-            image_filename = directory +  'capture_{timestamp}.jpg'.format(
+            image_filename = directory +  '{timestamp}.jpg'.format(
                 timestamp=int(time()))
         else:
             image_filename = directory +  'capture.jpg'
