@@ -49,8 +49,7 @@ VH=255
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,7)
-imagefile=open('/tmp/images/1549728025.jpg', 'wb')
-imagefile.write(image3)
+cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 
 
