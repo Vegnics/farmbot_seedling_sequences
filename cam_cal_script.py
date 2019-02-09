@@ -12,7 +12,7 @@ from subprocess import call
 import numpy as np
 
 x=DB()
-y=x.get_image(52)
+y=x.get_image(81)
 #parms=Parameters()
 #z=Image(parms,x)
 #z.load(y)
