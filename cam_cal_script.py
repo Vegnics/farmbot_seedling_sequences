@@ -19,7 +19,7 @@ import numpy as np
 #print(cv2.__version__)
 img2 = cv2.imread('/tmp/images/1549669210.jpg',1)
 
-send_message(message=str(cv2.__spec__), message_type='success', channel='toast')
+send_message(message=str(cv2.__version__), message_type='success', channel='toast')
 
 
 
