@@ -40,19 +40,6 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
             n_image[y, x, c] = np.clip(np.multiply(alpha,image[y, x, c])+beta, 0, 255)
  return n_image
 
-new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
-########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
-HL=51
-SL=90
-VL=140
-HH=112
-SH=255
-VH=255
-###################################################################
-mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
-image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-image3=cv2.medianBlur(image3,7)
-
 send_message(message='Hello World!', message_type='success', channel='toast')
 
 
