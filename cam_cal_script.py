@@ -15,7 +15,6 @@ x=DB()
 y=x.get_image(81)
 img1 = cv2.imread(y,1)
 img2=cv2.resize(img1,(640,480),interpolation = cv2.INTER_AREA)
-print(img2)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
@@ -51,7 +50,9 @@ VH=255
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,7)
-send_message(message=str(cv2.__version__), message_type='success', channel='toast')
+imagefile=open('/tmp/images/1549728025.jpg', 'wb')
+imagefile.write(image3)
+send_message(message='TUDO BEM', message_type='success', channel='toast')
 
 
 
