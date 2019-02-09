@@ -11,12 +11,12 @@ import cv2
 from subprocess import call
 import numpy as np
 
-#x=DB()
-#y=x.get_image(52)
+x=DB()
+y=x.get_image(52)
 #parms=Parameters()
 #z=Image(parms,x)
 #z.load(y)
-#print(cv2.__version__)
+print(y)
 img2 = cv2.imread('/tmp/images/1549729087.jpg',1)
 print(img2)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
