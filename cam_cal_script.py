@@ -20,7 +20,8 @@ import numpy as np
 img1 = cv2.imread('/tmp/images/1549133011.jpg',1)
 help(cv2.resize)
 x=str(help(cv2))
-print(x)
+file=open('/tmp/images/helptext.txt','w')
+file.write(x)
 send_message(message=str(cv2.__version__), message_type='success', channel='toast')
 
 
