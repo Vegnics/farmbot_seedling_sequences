@@ -18,7 +18,7 @@ import numpy as np
 #z.load(y)
 #print(cv2.__version__)
 img1 = cv2.imread('/tmp/images/1549133011.jpg',1)
-help(cv2.resize())
+help(cv2.resize)
 
 send_message(message=str(cv2.__version__), message_type='success', channel='toast')
 
