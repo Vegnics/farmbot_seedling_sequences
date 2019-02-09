@@ -39,6 +39,7 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
         for c in range(image.shape[2]):
             n_image[y, x, c] = np.clip(np.multiply(alpha,image[y, x, c])+beta, 0, 255)
  return n_image
+n_image = np.zeros([1,2])
 
 send_message(message='Hello World!', message_type='success', channel='toast')
 
