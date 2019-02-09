@@ -13,10 +13,9 @@ import numpy as np
 
 #x=DB()
 #y=x.get_image(95)
-Capture().capture()
-#img2 = cv2.imread(file,1)
-print(Capture().image)
-img2=[[[10]]]
+file=Capture().capture()
+print(file)
+img2 = cv2.imread(file,1)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
