@@ -31,8 +31,8 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  histo = cv2.calcHist([image_gray], [0], None, [256], [0, 256])
  histo_itg=integrate(histo,[249,255])
  print(histo_itg)
- alpha=2.21046+(2.519272e-06)*histo_itg
- beta=-155+-0.001259636217060513*histo_itg
+ alpha=2.3
+ beta=-200
  for y in range(image.shape[0]):
     for x in range(image.shape[1]):
         for c in range(image.shape[2]):
