@@ -18,6 +18,7 @@ import numpy as np
 #z.load(y)
 #print(cv2.__version__)
 img2 = cv2.imread('/tmp/images/1549133011.jpg',1)
+print(img2)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
