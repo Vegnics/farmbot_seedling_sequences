@@ -22,7 +22,7 @@ def create_mask(image,lowergreen,uppergreen):##función para crear máscara a pa
   return mask
 def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.zeros(image.shape, image.dtype)
- alpha=2.4
+ alpha=2.3
  beta=-100
  for y in range(image.shape[0]):
     for x in range(image.shape[1]):
@@ -33,8 +33,8 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
 new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
-HL=55
-SL=12
+HL=50
+SL=5
 VL=5
 HH=112
 SH=255
