@@ -20,17 +20,8 @@ def create_mask(image,lowergreen,uppergreen):##función para crear máscara a pa
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
   return mask
-def integrate(hist,bounds):#función para integrar un histograma
-    aux=0
-    for i in range(bounds[0],bounds[1]+1,1):
-        aux=aux+hist[i]
-    return aux
 def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.zeros(image.shape, image.dtype)
- image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
- histo = cv2.calcHist([image_gray], [0], None, [256], [0, 256])
- histo_itg=integrate(histo,[249,255])
- print(histo_itg)
  alpha=2.3
  beta=-200
  for y in range(image.shape[0]):
