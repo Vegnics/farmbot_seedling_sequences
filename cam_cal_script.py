@@ -39,7 +39,7 @@ new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=46
 SL=90
-VL=130
+VL=150
 HH=140
 SH=255
 VH=255
