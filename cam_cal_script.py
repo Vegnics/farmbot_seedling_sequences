@@ -23,7 +23,7 @@ def create_mask(image,lowergreen,uppergreen):##función para crear máscara a pa
 def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.zeros(image.shape, image.dtype)
  alpha=2.4
- beta=-200
+ beta=-170
  alphag=2.5
  betag=-200
  for y in range(image.shape[0]):
