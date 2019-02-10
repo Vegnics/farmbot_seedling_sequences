@@ -25,7 +25,7 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  alpha=2.4
  beta=-200
  alphag=2.5
- betag=-180
+ betag=-200
  for y in range(image.shape[0]):
     for x in range(image.shape[1]):
         for c in range(image.shape[2]):
