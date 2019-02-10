@@ -33,7 +33,7 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
 new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
-HL=100
+HL=80
 SL=60
 VL=5
 HH=160
