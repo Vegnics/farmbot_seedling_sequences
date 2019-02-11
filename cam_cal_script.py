@@ -35,7 +35,7 @@ SL=70
 VL=10
 HH=130
 SH=255
-VH=250
+VH=220
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
