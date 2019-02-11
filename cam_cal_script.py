@@ -46,7 +46,10 @@ image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
-            blur=5, morph=6, iterations=5, from_env_var=True, coordinates=True
+            blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
+            array=[{"size": 5, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
+                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
+            HSV_min=[52,70,85],HSV_max=[100,255,210]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
