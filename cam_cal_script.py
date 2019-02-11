@@ -34,7 +34,7 @@ new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
-SL=80
+SL=150
 VL=85
 HH=100
 SH=255
@@ -47,9 +47,9 @@ cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
-            array=[{"size": 5, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
+            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
-            HSV_min=[60,80,85],HSV_max=[100,255,210]
+            HSV_min=[52,150,85],HSV_max=[100,255,210]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
