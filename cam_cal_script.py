@@ -26,7 +26,7 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  alpha=2.32
  beta=-450
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
- return n_image.astype(np.uint8)
+ return n_image.astype(np.uint8) 
 
 new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
@@ -47,6 +47,12 @@ PD = PlantDetection(
             blur=5, morph=6, iterations=2, from_env_var=True, coordinates=True
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
+
+for coordinate_location in PD.plant_db.coordinate_locations:
+        log("Plant detected at X = {:5.0f} , Y = {:5.0f} with R = {:.1f}".format(
+                    coordinate_location[0],
+                    coordinate_location[1],
+                    coordinate_location[2]))
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 
 
