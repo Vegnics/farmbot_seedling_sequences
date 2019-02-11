@@ -11,6 +11,7 @@ import cv2
 from Capture import Capture
 import numpy as np
 from PlantDetection import PlantDetection
+import CeleryPy
 
 #x=DB()
 #y=x.get_image(95)
@@ -44,7 +45,7 @@ image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
-            blur=5, morph=6, iterations=2, from_env_var=True, coordinates=True
+            blur=5, morph=6, iterations=5, from_env_var=True, coordinates=True
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
@@ -54,6 +55,7 @@ for coordinate_location in PD.plant_db.coordinate_locations:
                     coordinate_location[1],
                     coordinate_location[2]))
 send_message(message='TUDO BEM', message_type='success', channel='toast')
+CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
 
 
