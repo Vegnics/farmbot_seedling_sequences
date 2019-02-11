@@ -22,8 +22,8 @@ def create_mask(image,lowergreen,uppergreen):##función para crear máscara a pa
   return mask
 def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.zeros(image.shape, image.dtype)
- alpha=1
- beta=0
+ alpha=2.32
+ beta=-195
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8)
 
@@ -35,7 +35,7 @@ SL=35
 VL=10
 HH=130
 SH=255
-VH=245
+VH=250
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
