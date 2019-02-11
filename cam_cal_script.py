@@ -10,6 +10,7 @@ import requests
 import cv2
 from Capture import Capture
 import numpy as np
+from PlantDetection import PlantDetection
 
 #x=DB()
 #y=x.get_image(95)
@@ -41,6 +42,11 @@ mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos 
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 #image3=cv2.medianBlur(image3,7)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
+PD = PlantDetection(
+            image='/tmp/images/1549138027.jpg',
+            blur=5, morph=6, iterations=2
+            )
+PD.detect_plants() # detect coordinates and sizes of weeds and plants
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 
 
