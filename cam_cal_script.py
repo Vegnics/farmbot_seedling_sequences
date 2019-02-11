@@ -32,8 +32,8 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=70
-VL=10
-HH=130
+VL=35
+HH=110
 SH=255
 VH=220
 ###################################################################
