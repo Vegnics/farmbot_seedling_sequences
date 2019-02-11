@@ -49,7 +49,7 @@ PD = PlantDetection(
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
 for coordinate_location in PD.plant_db.coordinate_locations:
-        log("Plant detected at X = {:5.0f} , Y = {:5.0f} with R = {:.1f}".format(
+        log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
                     coordinate_location[0],
                     coordinate_location[1],
                     coordinate_location[2]))
