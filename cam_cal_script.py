@@ -32,10 +32,10 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=70
-VL=35
+VL=60
 HH=110
 SH=255
-VH=220
+VH=210
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
