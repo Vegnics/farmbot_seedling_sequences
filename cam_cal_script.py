@@ -47,7 +47,7 @@ cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
-            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
+            array=[{"size": 7, "kernel": 'ellipse', "type": 'dilate',  "iters": 4},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
             HSV_min=[52,150,85],HSV_max=[100,255,210]
             )
