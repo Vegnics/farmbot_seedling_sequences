@@ -344,9 +344,9 @@ class Pixel2coord(object):
         camera_coordinates = bot_location + camera_offset  # img center coord
         center_pixel_location = self.calibration_params[
             'center_pixel_location'][:2]
-        #sign = [1 if s == 1 else -1 for s
-        #        in self.calibration_params['image_bot_origin_location']]
-        sign = [1,1]
+        sign = np.array([1 if s == 1 else -1 for s
+                in self.calibration_params['image_bot_origin_location']])
+        #sign = np.array([1,1],dtype=float)
         coord_scale = np.repeat(self.calibration_params['coord_scale'], 2)
         # Adjust scale factor for camera height
         calibration_z = self.calibration_params['camera_z']
