@@ -26,7 +26,7 @@ def create_mask(image,lowergreen,uppergreen):##función para crear máscara a pa
 def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.zeros(image.shape, image.dtype)
  alpha=2.3
- beta=-320
+ beta=-280
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
 
@@ -38,7 +38,7 @@ SL=100
 VL=85
 HH=115
 SH=255
-VH=210
+VH=220
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
@@ -49,7 +49,7 @@ PD = PlantDetection(
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 7, "kernel": 'ellipse', "type": 'dilate',  "iters": 4},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
-            HSV_min=[52,100,85],HSV_max=[115,255,210]
+            HSV_min=[52,100,85],HSV_max=[115,255,220]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
