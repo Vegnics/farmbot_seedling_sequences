@@ -571,7 +571,7 @@ class Image(object):
                 int(pt_x - long_half):int(pt_x + long_half) + 1
             ] = color
 
-        grid_range = np.array([[x] for x in range(-10000, 10000, 100)])
+        grid_range = np.array([[x] for x in range(-10000, 10000, 30)])
         large_grid = np.hstack((grid_range, grid_range, grid_range))
         large_grid_pixel = np.array(p2c.convert(large_grid, to_='pixels'))
         for pixel_x, coord_x in zip(large_grid_pixel[:, 0], large_grid[:, 0]):
@@ -595,7 +595,7 @@ class Image(object):
         self.images['current'] = self.images['marked']
 
         # _grid_point([1650, 2050, 0], 'coordinates')  # test point
-        _grid_point(self.plant_db.coordinates, 'coordinates')  # UTM location
+        _grid_point(self.plant_db.coordinates, 'coordinates'    )  # UTM location
         _grid_point(p2c.calibration_params['center_pixel_location'],
                     'pixels')  # image center
 
