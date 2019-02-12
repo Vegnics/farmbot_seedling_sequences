@@ -35,21 +35,21 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=70
-VL=85
+VL=50
 HH=115
 SH=255
 VH=220
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-image3=cv2.medianBlur(image3,7)
+#image3=cv2.medianBlur(image3,7)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 7, "kernel": 'ellipse', "type": 'dilate',  "iters": 4},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
-            HSV_min=[52,70,85],HSV_max=[115,255,220]
+            HSV_min=[52,70,50],HSV_max=[115,255,220]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
