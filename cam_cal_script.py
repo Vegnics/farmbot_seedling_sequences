@@ -59,10 +59,10 @@ for coordinate_location in PD.plant_db.coordinate_locations:
                     coordinate_location[1],
                     coordinate_location[2]))
 send_message(message='TUDO BEM', message_type='success', channel='toast')
-#CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
-#for coordinate_location in PD.plant_db.coordinate_locations:
-#   if coordinate_location[2] > 24:
-#        CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-430),(0,0,0),80)
+CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
+for coordinate_location in PD.plant_db.coordinate_locations:
+   if coordinate_location[2] > 24:
+        CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-430),(0,0,0),80)
 #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
