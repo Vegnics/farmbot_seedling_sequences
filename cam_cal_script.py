@@ -16,6 +16,7 @@ import CeleryPy
 #x=DB()
 #y=x.get_image(95)
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
+send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
 print(file)
 img2 = cv2.imread(file,1)
