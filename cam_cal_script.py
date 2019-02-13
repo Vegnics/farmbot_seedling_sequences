@@ -50,7 +50,7 @@ PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 7, "kernel": 'ellipse', "type": 'dilate',  "iters": 1},
-                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 5}],
+                   {"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 5}],
             HSV_min=[49,95,50],HSV_max=[115,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
@@ -65,9 +65,11 @@ send_message(message='TUDO BEM', message_type='success', channel='toast')
 CeleryPy.move_absolute(weeder,(0,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,100),150)
+CeleryPy.move_absolute(weeder,(100,0,200),150)
+CeleryPy.write_pin(number=53, value=0, mode=0)
 for coordinate_location in PD.plant_db.coordinate_locations:
    if coordinate_location[2] > 8:
-        CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-430),(0,0,0),80)
+        CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-250),(0,0,0),80)
         CeleryPy.wait(1500)
 #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
