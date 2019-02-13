@@ -43,13 +43,13 @@ VH=255
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-#image3=cv2.medianBlur(image3,7)
+image3=cv2.medianBlur(image3,7)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 7, "kernel": 'ellipse', "type": 'dilate',  "iters": 1},
-                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
+                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 5}],
             HSV_min=[49,95,50],HSV_max=[115,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
