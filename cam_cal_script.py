@@ -15,6 +15,7 @@ import CeleryPy
 
 #x=DB()
 #y=x.get_image(95)
+weeder=(20,553,-402)
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
 #send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
@@ -60,7 +61,10 @@ for coordinate_location in PD.plant_db.coordinate_locations:
                     coordinate_location[1],
                     coordinate_location[2]))
 send_message(message='TUDO BEM', message_type='success', channel='toast')
-CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
+#CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
+CeleryPy.move_absolute(weeder,(40,0,0),150)
+CeleryPy.move_absolute(weeder,(100,0,0),150)
+CeleryPy.move_absolute(weeder,(100,0,100),150)
 for coordinate_location in PD.plant_db.coordinate_locations:
    if coordinate_location[2] > 8:
         CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-430),(0,0,0),80)
