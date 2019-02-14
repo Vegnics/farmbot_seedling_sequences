@@ -16,7 +16,7 @@ import CeleryPy
 
 #x=DB()
 #y=x.get_image(95)
-device.set_pin_io_mode(1,53)
+device.set_pin_io_mode(1,4)
 weeder=(20,553,-402)
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
 #send_message(message=str(os.environ), message_type='success', channel='toast')
@@ -46,7 +46,7 @@ VH=255
 ###################################################################
 mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-image3=cv2.medianBlur(image3,7)
+image3=cv2.medianBlur(image3,5)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
@@ -68,12 +68,12 @@ CeleryPy.move_absolute(weeder,(0,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,100),150)
 CeleryPy.move_absolute(weeder,(100,0,200),150)
-CeleryPy.write_pin(number=53, value=0, mode=0)
+CeleryPy.write_pin(number=4, value=0, mode=0)
 for coordinate_location in PD.plant_db.coordinate_locations:
    if coordinate_location[2] > 8:
-        CeleryPy.write_pin(number=53, value=0, mode=0)
+        CeleryPy.write_pin(number=4, value=0, mode=0)
         CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-235),(0,0,0),80)
-        CeleryPy.write_pin(number=53, value=1, mode=0)
+        CeleryPy.write_pin(number=4, value=1, mode=0)
         CeleryPy.wait(1500)
 #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
