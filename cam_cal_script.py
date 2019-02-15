@@ -40,7 +40,7 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 HL=52
 SL=95
 VL=50
-HH=115
+HH=100
 SH=255
 VH=255
 ###################################################################
@@ -53,7 +53,7 @@ PD = PlantDetection(
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 1},
                    {"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[49,95,50],HSV_max=[115,255,255]
+            HSV_min=[49,95,50],HSV_max=[100,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
@@ -70,17 +70,18 @@ CeleryPy.move_absolute(weeder,(100,0,100),150)
 CeleryPy.move_absolute(weeder,(100,0,200),150)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 for coordinate_location in PD.plant_db.coordinate_locations:
-   if coordinate_location[2] > 8:
+   if coordinate_location[2] > 14:
         CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-235),(0,0,0),100)
         CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-265),(0,0,0),100)
         CeleryPy.wait(500)
         CeleryPy.write_pin(number=4, value=1, mode=0)
         CeleryPy.wait(500)
         CeleryPy.move_absolute((coordinate_location[0],coordinate_location[1],-180),(0,0,0),100)
-        CeleryPy.wait(1500)
+        CeleryPy.wait(500)
         CeleryPy.move_absolute((800,500,-180),(0,0,0),200)
         CeleryPy.wait(500)
         CeleryPy.write_pin(number=4, value=0, mode=0)
+        CeleryPy.wait(500)
 CeleryPy.move_absolute((0,0,0),(0,0,0),180)
 #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
