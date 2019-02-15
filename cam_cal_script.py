@@ -72,9 +72,9 @@ CeleryPy.write_pin(number=4, value=0, mode=0)
 for coordinate_location in PD.plant_db.coordinate_locations:
    if coordinate_location[2] > 14:
         x=coordinate_location[0]
-        y=coordinate_location[1]-4
+        y=coordinate_location[1]+4
         CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
-        CeleryPy.move_absolute((x,y,-265),(0,0,0),100)
+        CeleryPy.move_absolute((x,y,-273),(0,0,0),100)
         CeleryPy.wait(500)
         CeleryPy.write_pin(number=4, value=1, mode=0)
         CeleryPy.wait(500)
@@ -88,7 +88,7 @@ CeleryPy.move_absolute(weeder,(120,0,200),150)
 CeleryPy.move_absolute(weeder,(120,0,0),150)
 CeleryPy.move_absolute(weeder,(0,0,0),150)
 CeleryPy.move_absolute(weeder,(0,0,200),150)
-CeleryPy.move_absolute((0,0,0),(0,0,0),180)
+CeleryPy.move_absolute((0,0,0),(0,0,0),250)
 #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
