@@ -44,7 +44,7 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 HL=52
 SL=95
 VL=50
-HH=100
+HH=110
 SH=255
 VH=255
 ###################################################################
@@ -58,7 +58,7 @@ PD = PlantDetection(
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
                    {"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[49,95,50],HSV_max=[100,255,255]
+            HSV_min=[49,95,50],HSV_max=[110,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
@@ -79,7 +79,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           x=coordinate_location[0]
           y=coordinate_location[1]
           CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-266),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-265),(0,0,0),100)
           #CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=1, mode=0)
           CeleryPy.wait(500)
