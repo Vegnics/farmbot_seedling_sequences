@@ -33,6 +33,10 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  beta=-280
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
+def invert(imagem):
+ imagem = (255-imagem)
+ return imagem
+
 
 new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
@@ -48,6 +52,7 @@ mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos 
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
+
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
@@ -64,33 +69,34 @@ for coordinate_location in PD.plant_db.coordinate_locations:
                     coordinate_location[2]))
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 #CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
-CeleryPy.move_absolute(weeder,(0,0,0),150)
-CeleryPy.move_absolute(weeder,(100,0,0),150)
-CeleryPy.move_absolute(weeder,(100,0,100),150)
-CeleryPy.move_absolute(weeder,(100,0,200),150)
-CeleryPy.write_pin(number=4, value=0, mode=0)
-for coordinate_location in PD.plant_db.coordinate_locations:
-   if coordinate_location[2] > 14:
-        x=coordinate_location[0]
-        y=coordinate_location[1]
-        CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
-        #CeleryPy.move_absolute((x,y,-273),(0,0,0),100)
-        #CeleryPy.wait(500)
-        #CeleryPy.write_pin(number=4, value=1, mode=0)
-        #CeleryPy.wait(500)
-        #CeleryPy.move_absolute((x,y,-180),(0,0,0),100)
-        #CeleryPy.wait(500)
-        #CeleryPy.move_absolute((x+300,y,-180),(0,0,0),200)
-        #CeleryPy.wait(500)
-        #CeleryPy.write_pin(number=4, value=0, mode=0)
-        CeleryPy.wait(500)
-CeleryPy.move_absolute(weeder,(120,0,200),150)
-CeleryPy.move_absolute(weeder,(120,0,0),150)
-CeleryPy.move_absolute(weeder,(0,0,0),150)
-CeleryPy.move_absolute(weeder,(0,0,200),150)
+if len(PD.plant_db.coordinate_locations >= 1):
+  CeleryPy.move_absolute(weeder,(0,0,0),150)
+  CeleryPy.move_absolute(weeder,(100,0,0),150)
+  CeleryPy.move_absolute(weeder,(100,0,100),150)
+  CeleryPy.move_absolute(weeder,(100,0,200),150)
+  CeleryPy.write_pin(number=4, value=0, mode=0)
+  for coordinate_location in PD.plant_db.coordinate_locations:
+    if coordinate_location[2] > 14:
+          x=coordinate_location[0]
+          y=coordinate_location[1]
+          CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
+          #CeleryPy.move_absolute((x,y,-273),(0,0,0),100)
+          #CeleryPy.wait(500)
+          #CeleryPy.write_pin(number=4, value=1, mode=0)
+          #CeleryPy.wait(500)
+          #CeleryPy.move_absolute((x,y,-180),(0,0,0),100)
+          #CeleryPy.wait(500)
+          #CeleryPy.move_absolute((x+300,y,-180),(0,0,0),200)
+          #CeleryPy.wait(500)
+          #CeleryPy.write_pin(number=4, value=0, mode=0)
+          CeleryPy.wait(500)
+  CeleryPy.move_absolute(weeder,(120,0,200),150)
+  CeleryPy.move_absolute(weeder,(120,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,200),150)
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
-#CeleryPy.move_absolute((500,500,0),(0,0,0),100)
-#CeleryPy.move_absolute((0,0,0),(0,0,0),100)
+  #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
+  #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
 
 
