@@ -61,7 +61,7 @@ PD = PlantDetection(
             HSV_min=[49,95,50],HSV_max=[100,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
-if len(PD.plant_db.coordinate_locations >= 1):
+if len(PD.plant_db.coordinate_locations) >= 1:
   for coordinate_location in PD.plant_db.coordinate_locations:
         log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
                     coordinate_location[0],
