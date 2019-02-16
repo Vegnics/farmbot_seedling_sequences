@@ -79,7 +79,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           x=coordinate_location[0]
           y=coordinate_location[1]+5
           CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-265),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-276),(0,0,0),100)
           #CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=1, mode=0)
           CeleryPy.wait(500)
