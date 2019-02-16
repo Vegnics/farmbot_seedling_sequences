@@ -61,15 +61,14 @@ PD = PlantDetection(
             HSV_min=[49,95,50],HSV_max=[100,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
-
-for coordinate_location in PD.plant_db.coordinate_locations:
+if len(PD.plant_db.coordinate_locations >= 1):
+  for coordinate_location in PD.plant_db.coordinate_locations:
         log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
                     coordinate_location[0],
                     coordinate_location[1],
                     coordinate_location[2]))
-send_message(message='TUDO BEM', message_type='success', channel='toast')
+  send_message(message='TUDO BEM', message_type='success', channel='toast')
 #CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
-if len(PD.plant_db.coordinate_locations >= 1):
   CeleryPy.move_absolute(weeder,(0,0,0),150)
   CeleryPy.move_absolute(weeder,(100,0,0),150)
   CeleryPy.move_absolute(weeder,(100,0,100),150)
