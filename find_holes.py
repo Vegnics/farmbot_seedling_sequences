@@ -73,7 +73,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   for coordinate_location in PD.plant_db.coordinate_locations:
        x=coordinate_location[0]
        y=coordinate_location[1]
-       CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
+       CeleryPy.move_absolute((x,y,-435),(0,0,0),100)
        CeleryPy.wait(500)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NO HOLES', message_type='error', channel='toast')
