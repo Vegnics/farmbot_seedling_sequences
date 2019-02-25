@@ -30,21 +30,20 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
 def circles(template):
-    selected = []
-    template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-    template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
-    # _,template_gray=cv2.threshold(template_gray,250,255,cv2.THRESH_BINARY)
-    contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-    for i in range(len(contours)):
-        (x, y), r = cv2.minEnclosingCircle(contours[i])
-        if 25< r < 30:
-            selected.append([x, y, r])
-            cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
-    return template
+  selected = []  
+  template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+  template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
+  contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+  for i in range(len(contours)):
+      (x, y), r = cv2.minEnclosingCircle(contours[i])
+      if 25< r < 30:
+          selected.append([x, y, r])
+          cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
+  return 
 
 
-new_image=circles(img2)##obtenemos circulos
-cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
+img2=colorize(img2)##obtenemos circulos
+cv2.imwrite('/tmp/images/1549138022.jpg',img2)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=95
@@ -74,10 +73,10 @@ if len(PD.plant_db.coordinate_locations) >= 1:
                     coordinate_location[2]))
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   for coordinate_location in PD.plant_db.coordinate_locations:
-       x=coordinate_location[0]
-       y=coordinate_location[1]
-       CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
-       CeleryPy.wait(500)
+        x=coordinate_location[0]
+        y=coordinate_location[1]
+        CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
+        CeleryPy.wait(500)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='No hay bandeja, message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
