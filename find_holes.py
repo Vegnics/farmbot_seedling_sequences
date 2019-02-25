@@ -34,7 +34,7 @@ def circles(template):
   _, contours, _ = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
   for i in range(len(contours)):
       (x, y), r = cv2.minEnclosingCircle(contours[i])
-      if 20< r < 100:
+      if 25< r < 40:
           selected.append([x, y, r])
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
