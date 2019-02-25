@@ -42,25 +42,4 @@ def circles(template):
 circles(img2)##obtenemos circulos
 new_image=img2
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
-########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
-HL=52
-SL=95
-VL=50
-HH=110
-SH=255
-VH=255
-###################################################################
-mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
-image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-image3=cv2.medianBlur(image3,5)
-cv2.imwrite('/tmp/images/1549138027.jpg',image3)
-
-PD = PlantDetection(
-            image='/tmp/images/1549138027.jpg',
-            blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
-            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
-                   {"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[49,95,50],HSV_max=[110,255,255]
-            )
-PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
