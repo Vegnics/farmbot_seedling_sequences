@@ -35,7 +35,7 @@ def circles(template):
   for i in range(len(contours)):
       (x, y), r = cv2.minEnclosingCircle(contours[i])
       approx = cv2.approxPolyDP(contours[i],0.01*cv2.arcLength(contours[i],True),True)
-      if 25<r<30 and 8<len(approx)<20 :
+      if 25<r<30 and 8<len(approx)<25 :
           selected.append([x, y, r])
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
