@@ -14,7 +14,7 @@ from PlantDetection import PlantDetection
 from farmware_tools import device
 import CeleryPy
 
-CeleryPy.move_absolute((500,500,0),(0,0,0),150)
+CeleryPy.move_absolute((500,450,0),(0,0,0),150)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
