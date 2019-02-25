@@ -40,7 +40,7 @@ def circles(template):
         if 25< r < 30:
             selected.append([x, y, r])
             cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
-    return selected
+    return template
 
 
 new_image=circles(img2)##obtenemos circulos
