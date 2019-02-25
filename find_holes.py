@@ -14,8 +14,6 @@ from PlantDetection import PlantDetection
 from farmware_tools import device
 import CeleryPy
 
-device.set_pin_io_mode(1,4)
-weeder=(20,553,-402)
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
@@ -41,9 +39,9 @@ def circles(template):
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
 
-
-img2=colorize(img2)##obtenemos circulos
-cv2.imwrite('/tmp/images/1549138022.jpg',img2)
+circles(img2)##obtenemos circulos
+new_image=img2
+cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=95
