@@ -39,7 +39,7 @@ def circles(template):
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
 
-circles(img2)##obtenemos circulos
+#circles(img2)##obtenemos circulos
 new_image=img2
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
