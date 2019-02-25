@@ -30,8 +30,8 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
 def circles(template):
   selected = []  
   template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-  #template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
-  contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+  template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
+  _, contours, _ = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
   for i in range(len(contours)):
       (x, y), r = cv2.minEnclosingCircle(contours[i])
       if 25< r < 30:
