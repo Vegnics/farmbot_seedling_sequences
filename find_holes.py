@@ -79,7 +79,7 @@ def circles(template):
     for i in range(matrix.shape[0]):
         for j in range(matrix.shape[1]):
             x,y=matrix[i,j]
-            cv2.circle(template,(int(x),int(y)),15,(0,0,255),cv2.FILLED)
+            cv2.circle(template,(int(x),int(y)),15,(0,255,0),cv2.FILLED)
     return matrix
 circles(img2)##obtenemos circulos
 new_image=img2
