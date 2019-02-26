@@ -27,23 +27,60 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  beta=-280
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
+def array_shape(selected):
+    a=sorted(selected,key=lambda x:x[0])
+    rows=0
+    for i in range(len(a)):
+        if abs(a[i][0]-a[i+1][0])<20:
+            rows+=1
+        else:
+            rows += 1
+            break
+    b=sorted(selected,key=lambda x:x[1])
+    cols=0
+    for i in range(len(a)):
+        if abs(b[i][1]-b[i+1][1])<20:
+            cols+=1
+        else:
+            cols += 1
+            break
+    print(rows)
+    print(cols)
+    return rows,cols
+def fill_array(matrix,list):
+    sortedlistx=sorted(list,key=lambda x:x[0])
+    rows=matrix.shape[0]
+    cols=matrix.shape[1]
+    for i in range(cols):
+        sortedlisti=sortedlistx[i*rows:(i+1)*rows]
+        sortedlistij=sorted(sortedlisti,key=lambda x:x[1])
+        for j in range(rows):
+            try:
+                matrix[j,i]=sortedlistij[j]
+            except:
+                pass
+    return matrix
 def circles(template):
-  selected = []
-  template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-  template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
-  board=np.zeros(template_gray.shape)
-  cv2.circle(board,(200,200),30,255,2)
-  _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-  _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-  for i in range(len(contours)):
-      a=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
-      (x, y), r = cv2.minEnclosingCircle(contours[i])
-      print(a)
-      if 10<r<30 and a<0.1:
-          selected.append([x, y, r])
-          cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
-  return 
-
+    selected = []
+    template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
+    board=np.zeros(template_gray.shape)
+    cv2.circle(board,(200,200),30,255,2)
+    _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+    _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+    for i in range(len(contours)):
+        match=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
+        (x, y), r = cv2.minEnclosingCircle(contours[i])
+        if 20<r<35 and match<0.554:
+            selected.append([int(x), int(y)])
+    rows,cols=array_shape(selected)
+    matrix=np.zeros((rows,cols,2),dtype=np.int32)
+    matrix=fill_array(matrix,selected)
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            x,y=matrix[i,j]
+            cv2.circle(template,(int(x),int(y)),15,(0,0,255),cv2.FILLED)
+    return matrix
 circles(img2)##obtenemos circulos
 new_image=img2
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
