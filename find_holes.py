@@ -29,36 +29,45 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  return n_image.astype(np.uint8) 
 def array_shape(selected):
     a=sorted(selected,key=lambda x:x[0])
-    rows=0
-    for i in range(len(a)):
+    rows=[]
+    counter=0
+    for i in range(len(a)-1):
         if abs(a[i][0]-a[i+1][0])<20:
-            rows+=1
+            counter+=1
         else:
-            rows += 1
-            break
+            counter += 1
+            rows.append(counter)
+            counter=0
+    counter = 0
     b=sorted(selected,key=lambda x:x[1])
-    cols=0
-    for i in range(len(a)):
+    cols=[]
+    for i in range(len(a)-1):
         if abs(b[i][1]-b[i+1][1])<20:
-            cols+=1
+            counter+=1
         else:
-            cols += 1
-            break
-    print(rows)
-    print(cols)
+            counter += 1
+            cols.append(counter)
+            counter=0
+    rows=int(np.mean(rows))
+    cols=int(np.mean(cols))
     return rows,cols
 def fill_array(matrix,list):
     sortedlistx=sorted(list,key=lambda x:x[0])
+    sortedlisty = sorted(list, key=lambda x: x[1])
+    sortedlistxy= sorted(list, key=lambda x: x[1]+x[0])
     rows=matrix.shape[0]
     cols=matrix.shape[1]
+    p00=sortedlistxy[0]
+    dx = abs(sortedlisty[0][0] - sortedlisty[1][0])
+    dy = abs(sortedlistx[0][1]-sortedlistx[1][1])
+    dx=60.8
+    dy=61
+    pi=0
     for i in range(cols):
-        sortedlisti=sortedlistx[i*rows:(i+1)*rows]
-        sortedlistij=sorted(sortedlisti,key=lambda x:x[1])
+        pi=p00[0]+i*dx+1
         for j in range(rows):
-            try:
-                matrix[j,i]=sortedlistij[j]
-            except:
-                pass
+            pij=[pi,p00[1]+j*dy+5]
+            matrix[j,i]=pij
     return matrix
 def circles(template):
     selected = []
@@ -71,7 +80,7 @@ def circles(template):
     for i in range(len(contours)):
         match=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
         (x, y), r = cv2.minEnclosingCircle(contours[i])
-        if 20<r<35 and match<0.554:
+        if 20<r<35 and match<0.55:
             selected.append([int(x), int(y)])
     rows,cols=array_shape(selected)
     matrix=np.zeros((rows,cols,2),dtype=np.int32)
