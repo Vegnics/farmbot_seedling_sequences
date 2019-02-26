@@ -39,7 +39,7 @@ def circles(template):
       a=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
       (x, y), r = cv2.minEnclosingCircle(contours[i])
       print(a)
-      if 20<r<30 and a<0.1:
+      if 16<r<30 and a<0.1:
           selected.append([x, y, r])
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
