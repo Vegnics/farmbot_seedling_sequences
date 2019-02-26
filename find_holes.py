@@ -80,7 +80,7 @@ def circles(template):
     for i in range(len(contours)):
         match=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
         (x, y), r = cv2.minEnclosingCircle(contours[i])
-        if 20<r<35 and match<0.55:
+        if 20<r<35 and match<0.7:
             selected.append([int(x), int(y)])
     rows,cols=array_shape(selected)
     matrix=np.zeros((rows,cols,2),dtype=np.int32)
