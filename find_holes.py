@@ -39,7 +39,7 @@ def circles(template):
       a=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
       (x, y), r = cv2.minEnclosingCircle(contours[i])
       print(a)
-      if 10<r<30 and a<0.8:
+      if 10<r<30 and a<0.14:
           selected.append([x, y, r])
           cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
@@ -62,8 +62,8 @@ cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
-            blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
-            array=[{"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 4}],
+            blur=1, morph=1, iterations=1, from_env_var=True, coordinates=True,
+            array=[{"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 1}],
             HSV_min=[49,95,50],HSV_max=[110,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
