@@ -81,7 +81,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
     #   CeleryPy.wait(500)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NO HOLES', message_type='error', channel='toast')
-CeleryPy.move_absolute((0,0,0),(0,0,0),250)
+#CeleryPy.move_absolute((0,0,0),(0,0,0),250)
   #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
 #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
