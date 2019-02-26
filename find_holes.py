@@ -41,7 +41,7 @@ def circles(template):
         print(a)
         if 25<r<35 and a<0.1:
             selected.append([x, y, r])
-            cv2.circle(template,(int(x),int(y)),int(r),(0,0,255),cv2.FILLED)
+            cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
 
 circles(img2)##obtenemos circulos
