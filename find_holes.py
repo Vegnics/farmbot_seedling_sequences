@@ -28,20 +28,20 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
 def circles(template):
-    selected = []
-    template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-    template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
-    board=np.zeros(template_gray.shape)
-    cv2.circle(board,(200,200),30,255,2)
-    _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    for i in range(len(contours)):
-        a=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
-        (x, y), r = cv2.minEnclosingCircle(contours[i])
-        print(a)
-        if 25<r<35 and a<0.1:
-            selected.append([x, y, r])
-            cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
+  selected = []
+  template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+  template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
+  board=np.zeros(template_gray.shape)
+  cv2.circle(board,(200,200),30,255,2)
+  _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+  _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+  for i in range(len(contours)):
+      a=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
+      (x, y), r = cv2.minEnclosingCircle(contours[i])
+      print(a)
+      if 25<r<35 and a<0.1:
+          selected.append([x, y, r])
+          cv2.circle(template,(int(x),int(y)),int(r),(0,255,0),cv2.FILLED)
   return 
 
 circles(img2)##obtenemos circulos
