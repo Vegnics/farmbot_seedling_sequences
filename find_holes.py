@@ -27,6 +27,30 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  beta=-280
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
+def array_shape(selected):
+    a=sorted(selected,key=lambda x:x[0])
+    rows=[]
+    counter=0
+    for i in range(len(a)-1):
+        if abs(a[i][0]-a[i+1][0])<20:
+            counter+=1
+        else:
+            counter += 1
+            rows.append(counter)
+            counter=0
+    counter = 0
+    b=sorted(selected,key=lambda x:x[1])
+    cols=[]
+    for i in range(len(a)-1):
+        if abs(b[i][1]-b[i+1][1])<20:
+            counter+=1
+        else:
+            counter += 1
+            cols.append(counter)
+            counter=0
+    rows=int(np.mean(rows))
+    cols=int(np.mean(cols))
+    return rows,cols
 def fill_array(matrix,list):
     sortedlistx=sorted(list,key=lambda x:x[0])
     sortedlisty = sorted(list, key=lambda x: x[1])
@@ -71,7 +95,8 @@ def circles(template):
         (x, y), r = cv2.minEnclosingCircle(contours[i])
         if 20<r<35 and match<0.7:
             selected.append([int(x), int(y)])
-    rows,cols=6,10
+    rows,cols=array_shape(selected)
+    log('rows={},cols={}'.format(rows,cols)
     matrix=np.zeros((rows,cols,2),dtype=np.int32)
     matrix=fill_array(matrix,selected)
     for i in range(matrix.shape[0]):
