@@ -90,7 +90,7 @@ def circles(template):
     cv2.circle(board,(200,200),40,255,2)
     _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    cv2.drawContours(template_gray.contours,-1,(255,0,0),3)
+    cv2.drawContours(template_gray,contours,-1,(255,0,0),3)
     for i in range(len(contours)):
         match=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
         (x, y), r = cv2.minEnclosingCircle(contours[i])
