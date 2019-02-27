@@ -96,7 +96,7 @@ def circles(template):
         if 20<r<35 and match<0.7:
             selected.append([int(x), int(y)])
     rows,cols=array_shape(selected)
-    log('rows={},cols={}'.format(rows,cols)
+    log('rows={},cols={}'.format(rows,cols))
     matrix=np.zeros((rows,cols,2),dtype=np.int32)
     matrix=fill_array(matrix,selected)
     for i in range(matrix.shape[0]):
