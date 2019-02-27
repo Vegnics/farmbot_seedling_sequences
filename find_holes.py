@@ -105,8 +105,13 @@ def circles(template):
             x,y=matrix[i,j]
             cv2.circle(template,(int(x),int(y)),15,(0,255,0),cv2.FILLED)
     return matrix
+    
+template_gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)  
+_,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+cv2.drawContours(template_gray,contours,-1,(255,0,0),3)
 circles(img2)##obtenemos circulos
-new_image=img2
+new_image=template_gray
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
