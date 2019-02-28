@@ -29,6 +29,47 @@ def invert(img):
     img2 = 255-img
     img2 = cv2.medianBlur(img2,17)
     return img2
+def array_shape(selected):
+    a=sorted(selected,key=lambda x:x[0])
+    rows=[]
+    counter=0
+    print(len(a))
+    for i in range(len(a)-1):
+        if abs(a[i][0]-a[i+1][0])<30:
+            counter+=1
+        else:
+            counter += 1
+            rows.append(counter)
+            counter=0
+    counter = 0
+    b=sorted(selected,key=lambda x:x[1])
+    cols=[]
+    for i in range(len(a)-1):
+        if abs(b[i][1]-b[i+1][1])<30:
+            counter+=1
+        else:
+            counter += 1
+            cols.append(counter)
+            counter=0
+    print(rows)
+    print(cols)
+    rows=int(np.mean(rows))
+    cols=int(np.mean(cols))
+    return rows,cols
+  
+def fill_array(matrix,list):
+    sortedlistx=sorted(list,key=lambda x:x[0])
+    rows=matrix.shape[0]
+    cols=matrix.shape[1]
+    for i in range(cols):
+        sortedlisti=sortedlistx[i*rows:(i+1)*rows]
+        sortedlistij=sorted(sortedlisti, key=lambda x: x[1])
+        for j in range(rows):
+            print(sortedlistij[j])
+            matrix[j,i]=sortedlistij[j]
+    return matrix
+  
+#################################################################################################################################
 CeleryPy.move_absolute((550,450,0),(0,0,0),150)
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -75,7 +116,10 @@ if len(PD.plant_db.coordinate_locations) >= 1:
                     coordinate_location[0],
                     coordinate_location[1],
                     coordinate_location[2]))
-        holes.append([coordinate_location[0],coordinate_location[1]])        
+        holes.append([coordinate_location[0],coordinate_location[1]])  
+  rows,cols=array_shape(holes)
+  matrix=np.zeros((rows,cols,2))
+  matrix=fill_array(matrix,holes)        
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   #for coordinate_location in PD.plant_db.coordinate_locations:
   #     x=coordinate_location[0]
