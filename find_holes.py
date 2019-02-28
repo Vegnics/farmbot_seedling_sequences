@@ -121,7 +121,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   matrix=np.zeros((rows,cols,2))
   matrix=fill_array(matrix,holes) 
   send_message(message='TUDO BEM', message_type='success', channel='toast')
-  log(str(dir_path))
+  np.save('/root/farmware/array',matrix)
 #  CeleryPy.move_absolute((550,450,-435),(0,0,0),200)
  # for i in range(3,rows):
   #  for j in range(2,cols):
