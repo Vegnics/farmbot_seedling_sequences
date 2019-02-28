@@ -27,91 +27,22 @@ def colorize(image):##función para cambiar el brillo y el contraste de imagen
  beta=-280
  n_image = np.clip(np.multiply(alpha,image)+beta, 0, 255)
  return n_image.astype(np.uint8) 
-def array_shape(selected):
-    a=sorted(selected,key=lambda x:x[0])
-    rows=[]
-    counter=0
-    for i in range(len(a)-1):
-        if abs(a[i][0]-a[i+1][0])<20:
-            counter+=1
-        else:
-            counter += 1
-            rows.append(counter)
-            counter=0
-    counter = 0
-    b=sorted(selected,key=lambda x:x[1])
-    cols=[]
-    for i in range(len(a)-1):
-        if abs(b[i][1]-b[i+1][1])<20:
-            counter+=1
-        else:
-            counter += 1
-            cols.append(counter)
-            counter=0
-    rows=int(np.mean(rows))
-    cols=int(np.mean(cols))
-    return rows,cols
-def fill_array(matrix,list):
-    sortedlistx=sorted(list,key=lambda x:x[0])
-    sortedlisty = sorted(list, key=lambda x: x[1])
-    sortedlistxy= sorted(list, key=lambda x: x[1]+x[0])
-    sl=[]
-    rows=matrix.shape[0]
-    cols=matrix.shape[1]
-    p00=sortedlistxy[0]
-    dx=[]
-    dy=[]
-    for i in range(cols):
-        sortedlisti=sortedlistx[i*rows:(i+1)*rows]
-        sortedlistij=sorted(sortedlisti, key=lambda x: x[1])
-        sl.append(sortedlistij)
-    for i in range(cols-1):
-        for j in range(rows-1):
-            dx.append(abs(sl[i][j][0] - sl[i+1][j][0]))
-    for i in range(cols-1):
-        for j in range(rows-1):
-            dy.append(abs(sl[i][j][1] - sl[i][j+1][1]))
-    dx=int(np.mean(dx))
-    dy=int(np.mean(dy))
-    print(dx)
-    print(dy)
-    pi=0
-    for i in range(cols):
-        pi=p00[0]+i*dx+1
-        for j in range(rows):
-            pij=[pi,p00[1]+j*dy+5]
-            matrix[j,i]=pij
-    return matrix
-def circles(template):
-    selected = []
-    template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-    template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)
-    board=np.zeros(template_gray.shape)
-    cv2.circle(board,(200,200),40,255,2)
-    _,circle, hie = cv2.findContours(board.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    _,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    cv2.drawContours(template_gray,contours,-1,(255,0,0),3)
-    for i in range(len(contours)):
-        match=cv2.matchShapes(contours[i],circle[1],cv2.CONTOURS_MATCH_I2,0)
-        (x, y), r = cv2.minEnclosingCircle(contours[i])
-        if 20<r<35 and match<0.8:
-            selected.append([int(x), int(y)])
-    rows,cols=array_shape(selected)
-    log('rows={},cols={}'.format(rows,cols))
-    matrix=np.zeros((rows,cols,2),dtype=np.int32)
-    matrix=fill_array(matrix,selected)
-    for i in range(matrix.shape[0]):
-        for j in range(matrix.shape[1]):
-            x,y=matrix[i,j]
-            cv2.circle(template,(int(x),int(y)),15,(0,255,0),cv2.FILLED)
-    return matrix
-    
-template_gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-template_gray = cv2.adaptiveThreshold(template_gray, 128, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 111, 2)  
-_,contours, hie = cv2.findContours(template_gray.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-cv2.drawContours(template_gray,contours,-1,(255,0,0),3)
-circles(img2)##obtenemos circulos
-new_image=template_gray
+def invert(img):
+    img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img2 = 255-img
+    img2 = cv2.medianBlur(img2,17)
+    return img2
+image=invert(img2)
+image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+template=cv2.imread('template.jpg',1)
+template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
+w, h = template.shape[::-1]
+res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
+threshold = 0.85
+loc = np.where( res >= threshold)
+for pt in zip(*loc[::-1]):
+    cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
+new_image=img2
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
