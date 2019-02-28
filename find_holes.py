@@ -121,7 +121,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   matrix=np.zeros((rows,cols,2))
   matrix=fill_array(matrix,holes) 
   send_message(message='TUDO BEM', message_type='success', channel='toast')
-  for i in range(4,rows):
+  for i in range(3,rows):
     for j in range(5,cols):
       x=matrix[i,j,0]
       y=matrix[i,j,1]
