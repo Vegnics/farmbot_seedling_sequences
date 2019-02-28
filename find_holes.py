@@ -69,11 +69,13 @@ PD = PlantDetection(
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
+  holes=[]
   for coordinate_location in PD.plant_db.coordinate_locations:
         log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
                     coordinate_location[0],
                     coordinate_location[1],
                     coordinate_location[2]))
+        holes.append([coordinate_location[0],coordinate_location[1]])        
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   #for coordinate_location in PD.plant_db.coordinate_locations:
   #     x=coordinate_location[0]
