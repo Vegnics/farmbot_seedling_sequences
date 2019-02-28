@@ -71,12 +71,11 @@ if len(PD.plant_db.coordinate_locations) >= 1:
                     coordinate_location[1],
                     coordinate_location[2]))
   send_message(message='TUDO BEM', message_type='success', channel='toast')
-#CeleryPy.move_absolute((500,500,-400),(0,0,0),100)
-  CeleryPy.move_absolute(weeder,(0,0,0),150)
-  CeleryPy.move_absolute(weeder,(100,0,0),150)
-  CeleryPy.move_absolute(weeder,(100,0,100),150)
-  CeleryPy.move_absolute(weeder,(100,0,200),150)
-  CeleryPy.write_pin(number=4, value=0, mode=0)
+#  CeleryPy.move_absolute(weeder,(0,0,0),150)
+#  CeleryPy.move_absolute(weeder,(100,0,0),150)
+#  CeleryPy.move_absolute(weeder,(100,0,100),150)
+#  CeleryPy.move_absolute(weeder,(100,0,200),150)
+#  CeleryPy.write_pin(number=4, value=0, mode=0)
   for coordinate_location in PD.plant_db.coordinate_locations:
     if coordinate_location[2] > 14:
           aux=abs(coordinate_location[0]-matrix[:,:,0])+abs(coordinate_location[1]-matrix[:,:,1])
