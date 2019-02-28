@@ -124,8 +124,8 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.move_absolute((550,450,-435),(0,0,0),150)
   for i in range(3,rows):
     for j in range(2,cols):
-      x=matrix[i,j,0]
-      y=matrix[i,j,1]
+      x=matrix[i,j,0]-2
+      y=matrix[i,j,1]-2
       CeleryPy.move_absolute((int(x),int(y),-435),(0,0,0),60)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NO HOLES', message_type='error', channel='toast')
