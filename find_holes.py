@@ -119,7 +119,8 @@ if len(PD.plant_db.coordinate_locations) >= 1:
         holes.append([coordinate_location[0],coordinate_location[1]])  
   rows,cols=array_shape(holes)
   matrix=np.zeros((rows,cols,2))
-  matrix=fill_array(matrix,holes)        
+  matrix=fill_array(matrix,holes) 
+  send_message(message=str(matrix), message_type='success', channel='toast')
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   #for coordinate_location in PD.plant_db.coordinate_locations:
   #     x=coordinate_location[0]
