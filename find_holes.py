@@ -14,9 +14,6 @@ from PlantDetection import PlantDetection
 from farmware_tools import device
 import CeleryPy
 
-CeleryPy.move_absolute((550,450,0),(0,0,0),150)
-file=Capture().capture()
-img2 = cv2.imread(file,1)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
@@ -32,11 +29,17 @@ def invert(img):
     img2 = 255-img
     img2 = cv2.medianBlur(img2,17)
     return img2
-image=invert(img2)
-image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+CeleryPy.move_absolute((550,450,0),(0,0,0),150)
+
 template=cv2.imread('template.jpg',1)
 template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
 w, h = template.shape[::-1]
+
+file=Capture().capture()
+img2 = cv2.imread(file,1)
+image=invert(img2)
+image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+
 res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
 threshold = 0.85
 loc = np.where( res >= threshold)
