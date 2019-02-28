@@ -81,7 +81,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           _,_,minloc,_=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          x,y=matrix[xmat,ymat,:]
+          x,y=matrix[ymat,xmat]
           CeleryPy.move_absolute((x,y,-235),(0,0,0),100)
           CeleryPy.move_absolute((x,y,-276),(0,0,0),100)
           #CeleryPy.wait(500)
