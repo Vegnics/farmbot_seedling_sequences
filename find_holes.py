@@ -31,7 +31,8 @@ def invert(img):
     return img2
 CeleryPy.move_absolute((550,450,0),(0,0,0),150)
 
-template=cv2.imread('template.jpg',1)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+template=cv2.imread(dir_path+'/'+'template.jpg',1)
 template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
 w, h = template.shape[::-1]
 
