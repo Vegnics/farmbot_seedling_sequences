@@ -76,7 +76,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.move_absolute(weeder,(100,0,200),150)
   CeleryPy.write_pin(number=4, value=1, mode=0)
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if coordinate_location[2] > 14:
+    if coordinate_location[2] > 8:
           aux=abs(coordinate_location[0]-matrix[:,:,0])+abs(coordinate_location[1]-matrix[:,:,1])
           _,_,minloc,_=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
