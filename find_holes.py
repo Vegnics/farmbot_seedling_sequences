@@ -83,7 +83,7 @@ image=invert(img2)
 image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
 
 res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
-threshold = 0.85
+threshold = 0.75
 loc = np.where( res >= threshold)
 for pt in zip(*loc[::-1]):
     cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
