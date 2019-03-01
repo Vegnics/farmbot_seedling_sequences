@@ -70,10 +70,10 @@ if len(PD.plant_db.coordinate_locations) >= 1:
                     coordinate_location[1],
                     coordinate_location[2]))
   send_message(message='TUDO BEM', message_type='success', channel='toast')
-#  CeleryPy.move_absolute(weeder,(0,0,0),150)
-#  CeleryPy.move_absolute(weeder,(100,0,0),150)
-#  CeleryPy.move_absolute(weeder,(100,0,100),150)
-#  CeleryPy.move_absolute(weeder,(100,0,200),150)
+  CeleryPy.move_absolute(weeder,(0,0,0),150)
+  CeleryPy.move_absolute(weeder,(100,0,0),150)
+  CeleryPy.move_absolute(weeder,(100,0,100),150)
+  CeleryPy.move_absolute(weeder,(100,0,200),150)
   CeleryPy.write_pin(number=4, value=1, mode=0)
   for coordinate_location in PD.plant_db.coordinate_locations:
     if coordinate_location[2] > 14:
@@ -95,10 +95,10 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           CeleryPy.move_absolute((x+350,y,-260),(0,0,0),100)
           CeleryPy.write_pin(number=4, value=1, mode=0)
           CeleryPy.wait(500)
-#  CeleryPy.move_absolute(weeder,(120,0,200),150)
-#  CeleryPy.move_absolute(weeder,(120,0,0),150)
-#  CeleryPy.move_absolute(weeder,(0,0,0),150)
-#  CeleryPy.move_absolute(weeder,(0,0,200),150)
+  CeleryPy.move_absolute(weeder,(120,0,200),150)
+  CeleryPy.move_absolute(weeder,(120,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,200),150)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
