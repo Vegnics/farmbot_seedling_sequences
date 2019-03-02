@@ -71,7 +71,7 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 coordenadas00=[]
-for i in range(10):
+for i in range(30):
       CeleryPy.move_absolute((550,450,0),(0,0,0),150)
 
       dir_path = os.path.dirname(os.path.realpath(__file__))
