@@ -71,7 +71,7 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 coordenadas00=[]
-for i in range(20):
+for i in range(10):
       CeleryPy.move_absolute((550,450,0),(0,0,0),150)
 
       dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -138,6 +138,6 @@ for i in range(20):
         send_message(message='NO HOLES', message_type='error', channel='toast')
       #CeleryPy.move_absolute((0,0,0),(0,0,0),250)
         #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
-      #CeleryPy.move_absolute((0,0,0),(0,0,0),200)
+      CeleryPy.move_absolute((0,0,0),(0,0,0),200)
 send_message(message=str(coordenadas00), message_type='error', channel='toast')
 
