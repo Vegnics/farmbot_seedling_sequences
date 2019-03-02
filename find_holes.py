@@ -122,12 +122,15 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   matrix=fill_array(matrix,holes) 
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   np.save('/root/farmware/array',matrix)
-#  CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
-#  for i in range(rows):
-#    for j in range(cols):
-#      x=matrix[i,j,0]-7
-#      y=matrix[i,j,1]+7
-#      CeleryPy.move_absolute((int(x),int(y),-255),(0,0,0),70)
+  CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
+  x=matrix[0,5,0]-7
+  y=matrix[0,5,1]+7
+  CeleryPy.move_absolute((int(x),int(y),-259),(0,0,0),70)
+ # for i in range(rows):
+ #   for j in range(cols):
+ #     x=matrix[i,j,0]-7
+ #     y=matrix[i,j,1]+7
+ #     CeleryPy.move_absolute((int(x),int(y),-255),(0,0,0),70)
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NO HOLES', message_type='error', channel='toast')
 #CeleryPy.move_absolute((0,0,0),(0,0,0),250)
