@@ -125,6 +125,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
   x=matrix[0,5,0]-7
   y=matrix[0,5,1]+7
+  log('{},{}'.format(x,y))
   CeleryPy.move_absolute((int(x),int(y),-259),(0,0,0),70)
  # for i in range(rows):
  #   for j in range(cols):
