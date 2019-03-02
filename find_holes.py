@@ -71,9 +71,9 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 coordenadas00=[]
-for i in range(30):
+for i in range(5):
       CeleryPy.move_absolute((550,450,0),(0,0,0),150)
-
+      CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
       template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
