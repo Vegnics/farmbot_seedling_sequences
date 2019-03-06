@@ -82,13 +82,13 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   for coordinate_location in PD.plant_db.coordinate_locations:
     if coordinate_location[2] > 8:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
-          (_,_,minloc,_)=cv2.minMaxLoc(aux)
+          (_,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
           xmatsig=np.clip(minloc[0]-3,0,10)
           ymatsig=np.clip(minloc[1]-2,0,10)
           y,x=matrix[ymat,xmat]
-          xsig,ysig=matrix[xmatsig,ymatsig]
+          xsig,ysig=matrix[ymatsig,xmatsig]
           xsig=xsig-9
           ysig=ysig+5
           x=x-9
