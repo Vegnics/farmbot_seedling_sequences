@@ -2,7 +2,7 @@ import CeleryPy
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 cmd='ls {}'.format(dir_path)
-url='https://raw.githubusercontent.com/Vegnics/files_probe/master/get-pip.py'
+url='http://192.168.0.6:8000/Desktop/get-pip.py'
 try:
     from urllib.request import urlretrieve
     try:
