@@ -93,9 +93,9 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           xsig=xsig-9
           ysig=ysig+5
           x=x-9
-          y=y+5
+          y=y+12
           CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-275),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-281),(0,0,0),100)
           CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=0, mode=0)
           CeleryPy.wait(500)
