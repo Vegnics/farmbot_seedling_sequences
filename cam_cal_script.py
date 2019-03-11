@@ -80,7 +80,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.wait(200)
   CeleryPy.write_pin(number=4, value=1, mode=0)
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if coordinate_location[2] > 18:
+    if coordinate_location[2] > 12:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
@@ -99,7 +99,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=0, mode=0)
           CeleryPy.wait(500)
-          CeleryPy.move_absolute((x,y,-210),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-215),(0,0,0),100)
           CeleryPy.wait(500)
           CeleryPy.move_absolute((xsig,ysig,-200),(0,0,0),100)
           CeleryPy.move_absolute((xsig,ysig,-258),(0,0,0),100)
