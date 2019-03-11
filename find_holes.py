@@ -119,7 +119,8 @@ for i in range(1):
                           coordinate_location[0],
                           coordinate_location[1],
                           coordinate_location[2]))
-              holes.append([coordinate_location[0],coordinate_location[1]])  
+              if coordinate_location[2]>10.5:
+                holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix=np.zeros((rows,cols,2))
         matrix=fill_array(matrix,holes) 
