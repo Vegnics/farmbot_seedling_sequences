@@ -7,7 +7,7 @@ def find_all(name, path):
             result.append(os.path.join(root, name))
     return result
 
-result=find_all('LOGGING','/')
+result=find_all('pip','/')
 CeleryPy.send_message(message='YEAH'+'\n'+str(result), message_type='success', channel='toast')
 
 
