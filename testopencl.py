@@ -7,6 +7,12 @@ def find_all(name, path):
             result.append(os.path.join(root, name))
     return result
 a=os.popen('python3 /root/farmware/get-pip.py')
+CeleryPy.wait(5000)
+result=a.read()
+CeleryPy.send_message(message='YEAH'+'\n'+str(result), message_type='warn', channel='toast')
+CeleryPy.wait(20000)
+a=os.popen('pip --version')
+CeleryPy.wait(5000)
 result=a.read()
 CeleryPy.send_message(message='YEAH'+'\n'+str(result), message_type='success', channel='toast')
 
