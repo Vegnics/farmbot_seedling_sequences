@@ -8,8 +8,8 @@ def find_all(name, path):
             return result
 
 result=find_all('setuptools','/')
-#a=os.popen('ls {}'.format(result[0]))
-#result=a.read()
+a=os.popen('ls {}'.format(result[0]))
+result=a.read()
 CeleryPy.send_message(message='YEAH'+'\n'+str(result), message_type='success', channel='toast')
 
 
