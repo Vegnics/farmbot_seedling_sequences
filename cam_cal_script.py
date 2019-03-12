@@ -91,7 +91,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           x,y=matrix[ymat,xmat]
           xsig,ysig=matrix[ymatsig,xmatsig]
           xsig=xsig-9
-          ysig=ysig+5
+          ysig=ysig+12
           x=x-9
           y=y+12
           CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
