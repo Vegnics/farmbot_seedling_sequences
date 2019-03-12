@@ -1,9 +1,13 @@
 import CeleryPy
 import os
-cmd='locate LOGGING'
-f=os.popen(cmd)
-out=f.read()
-CeleryPy.send_message(message=str(out), message_type='success', channel='toast')
+import subprocess
+proc = subprocess.Popen(['locate','LOGGING'])
+try:
+    outs, errs = proc.communicate(timeout=15)
+except TimeoutExpired:
+    proc.kill()
+    outs, errs = proc.communicate()
+CeleryPy.send_message(message=str(outs), message_type='success', channel='toast')
 
 
 
