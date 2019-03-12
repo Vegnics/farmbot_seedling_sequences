@@ -5,9 +5,11 @@ def find_all(name, path):
     for root, dirs, files in list(os.walk(path)):
         if name in dirs:
             result.append(os.path.join(root, name))
-    return result
+            return result
 
 result=find_all('pip','/')
+a=os.popen('ls {}'.format(result[0]))
+result=a.read()
 CeleryPy.send_message(message='YEAH'+'\n'+str(result), message_type='success', channel='toast')
 
 
