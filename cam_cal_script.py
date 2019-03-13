@@ -62,6 +62,7 @@ PD = PlantDetection(
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
+  O=len(PD.plant_db.coordinate_locations)
   dir_path='/root/farmware'
   matrix=np.load(dir_path+'/'+'array.npy')
   for coordinate_location in PD.plant_db.coordinate_locations:
@@ -79,19 +80,20 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.write_pin(number=4, value=0, mode=0)
   CeleryPy.wait(200)
   CeleryPy.write_pin(number=4, value=1, mode=0)
-  for coordinate_location in PD.plant_db.coordinate_locations:
+  
+  for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
     if coordinate_location[2] > 12:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
           xmat=minloc[0]
           ymat=minloc[1]
-          xmatsig=np.clip(minloc[0]-3,0,10)
-          ymatsig=np.clip(minloc[1]-2,0,10)
+          xmatsig=int(np.clip(i%2,0,10))
+          ymatsig=int(np.clip((i-xmatsig)/2,0,10))
           x,y=matrix[ymat,xmat]
           xsig,ysig=matrix[ymatsig,xmatsig]
           xsig=xsig-9
-          ysig=ysig+11
+          ysig=ysig+11 
           x=x-9
           y=y+12
           CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
