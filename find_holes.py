@@ -71,9 +71,9 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 coordenadas00=[]
-for i in range(1):
-      #CeleryPy.move_absolute((550,340,0),(0,0,0),150)
-      CeleryPy.move_absolute((500,500,0),(0,0,0),150)
+for i in range(100):
+      CeleryPy.move_absolute((550,340,0),(0,0,0),150)
+      #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
@@ -124,7 +124,7 @@ for i in range(1):
         rows,cols=array_shape(holes)
         matrix=np.zeros((rows,cols,2))
         matrix=fill_array(matrix,holes) 
-        send_message(message='TUDO BEM', message_type='success', channel='toast')
+        #send_message(message='TUDO BEM', message_type='success', channel='toast')
         np.save('/root/farmware/array',matrix)
         #CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
         x=matrix[0,0,0]-7
