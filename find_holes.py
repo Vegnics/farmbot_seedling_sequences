@@ -155,7 +155,7 @@ for i in range(0,len(matrices)):
     suma=suma+error
 varianza=(suma)/number
 desv=varianza**0.5
-np.save('/root/farmware/promedios',promedio)
-np.save('/root/farmware/varianzas',desv)
+np.save('/root/farmware/OPENCLTEST/promedios',promedio)
+np.save('/root/farmware/OPENCLTEST/varianzas',desv)
 send_message(message='TUDO BEM', message_type='error', channel='toast')
 
