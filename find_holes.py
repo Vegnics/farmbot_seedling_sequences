@@ -70,8 +70,9 @@ def fill_array(matrix,list):
     return matrix
   
 #################################################################################################################################
-coordenadas00=[]
-for i in range(100):
+matrices=[]
+number=4
+for i in range(number):
       CeleryPy.move_absolute((550,340,0),(0,0,0),150)
       #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
@@ -127,9 +128,9 @@ for i in range(100):
         #send_message(message='TUDO BEM', message_type='success', channel='toast')
         np.save('/root/farmware/array',matrix)
         #CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
-        x=matrix[0,0,0]-7
-        y=matrix[0,0,1]+7
-        coordenadas00.append([x,y])
+        #x=matrix[:,:,0]-7
+        #y=matrix[:,:,1]+7
+        #coordenadas00.append([x,y])
       #  CeleryPy.move_absolute((int(x),int(y),-259),(0,0,0),70)
        # for i in range(rows):
        #   for j in range(cols):
@@ -140,6 +141,14 @@ for i in range(100):
         send_message(message='NO HOLES', message_type='error', channel='toast')
       #CeleryPy.move_absolute((0,0,0),(0,0,0),250)
         #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
+      matrices.append(matrix)
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
-send_message(message=str(coordenadas00), message_type='error', channel='toast')
+prom=np.array(sum(matrices)/number)
+errores=[]
+for matr in matrices:
+  errores.append((matr-prom)**2)
+varianza=np.array((sum(errores))**0.5)
+np.save('/root/farmware/calibrate_camera-master/promedios.npy',prom)
+np.save('/root/farmware/calibrate_camera-master/varianzas.npy',varianza)
+send_message(message='TUDO BEM', message_type='error', channel='toast')
 
