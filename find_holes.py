@@ -71,7 +71,7 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 matrices=[]
-number=3
+number=100
 for i in range(number):
       CeleryPy.move_absolute((550,345,0),(0,0,0),150)
       #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
