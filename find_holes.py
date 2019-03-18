@@ -71,7 +71,7 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 matrices=[]
-number=2
+number=1
 for i in range(number):
       CeleryPy.move_absolute((550,345,0),(0,0,0),150)
       #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
@@ -127,6 +127,7 @@ for i in range(number):
         matrix=fill_array(matrix,holes) 
         #send_message(message='TUDO BEM', message_type='success', channel='toast')
         np.save('/root/farmware/array',matrix)
+        matrices.append(matrix)
         #CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
         #x=matrix[:,:,0]-7
         #y=matrix[:,:,1]+7
@@ -141,7 +142,6 @@ for i in range(number):
         send_message(message='NO HOLES', message_type='error', channel='toast')
       #CeleryPy.move_absolute((0,0,0),(0,0,0),250)
         #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
-      matrices.append(matrix)
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
       
 suma=0
