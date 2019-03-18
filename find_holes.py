@@ -116,10 +116,6 @@ for i in range(number):
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
-                          coordinate_location[0],
-                          coordinate_location[1],
-                          coordinate_location[2]))
               if coordinate_location[2]>10.5:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
