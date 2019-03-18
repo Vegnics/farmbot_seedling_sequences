@@ -73,7 +73,7 @@ def fill_array(matrix,list):
 matrices=[]
 number=2
 for i in range(number):
-      CeleryPy.move_absolute((550,340,0),(0,0,0),150)
+      CeleryPy.move_absolute((550,345,0),(0,0,0),150)
       #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -157,5 +157,5 @@ varianza=(suma)/number
 desv=varianza**0.5
 np.save('/root/farmware/OPENCLTEST/promedios',promedio)
 np.save('/root/farmware/OPENCLTEST/varianzas',desv)
-send_message(message='TUDO BEM', message_type='error', channel='toast')
+send_message(message='TUDO BEM', message_type='success', channel='toast')
 
