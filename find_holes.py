@@ -126,16 +126,16 @@ for num in range(number):
         suma=0
         for i in range(0,len(matrices)):
             suma=suma+matrices[i]
-        promedio=suma/number  
+        promedio=suma/(num+1)  
 
         suma=0
         for i in range(0,len(matrices)):
             error=(matrices[i]-promedio)**2
             suma=suma+error
-        varianza=(suma)/number
+        varianza=(suma)/(num+1)
         desv=varianza**0.5
         np.save('/root/farmware/OPENCLTEST/promedios',promedio)
-        np.save('/root/farmware/OPENCLTEST/varianzas',desv)
+        np.save('/root/farmware/OPENCLTEST/desvestandar',desv)
        #if len(PD.plant_db.coordinate_locations) == 0:
         send_message(message=str(num), message_type='success', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
