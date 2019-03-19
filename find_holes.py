@@ -123,7 +123,7 @@ for num in range(number):
         matrix=fill_array(matrix,holes) 
         np.save('/root/farmware/array',matrix)
         matrices.append(matrix)
-       if len(PD.plant_db.coordinate_locations) == 0:
+      if len(PD.plant_db.coordinate_locations) == 0:
         send_message(message='NO HOLES', message_type='error', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
       
