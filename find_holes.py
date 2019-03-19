@@ -71,10 +71,10 @@ def fill_array(matrix,list):
   
 #################################################################################################################################
 matrices=[]
-number=100
+number=1
 for num in range(number):
-      CeleryPy.move_absolute((550,345,0),(0,0,0),150)
-      #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
+      #CeleryPy.move_absolute((550,345,0),(0,0,0),150)
+      CeleryPy.move_absolute((500,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
@@ -123,35 +123,22 @@ for num in range(number):
         matrix=fill_array(matrix,holes) 
         np.save('/root/farmware/array',matrix)
         matrices.append(matrix)
-        suma=0
-        for i in range(0,len(matrices)):
-            suma=suma+matrices[i]
-        promedio=suma/(num+1)  
-
-        suma=0
-        for i in range(0,len(matrices)):
-            error=(matrices[i]-promedio)**2
-            suma=suma+error
-        varianza=(suma)/(num+1)
-        desv=varianza**0.5
-        np.save('/root/farmware/OPENCLTEST/promedios',promedio)
-        np.save('/root/farmware/OPENCLTEST/desvestandar',desv)
-       #if len(PD.plant_db.coordinate_locations) == 0:
-        send_message(message=str(num), message_type='success', channel='toast')
+       if len(PD.plant_db.coordinate_locations) == 0:
+        send_message(message='NO HOLES', message_type='error', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
       
-suma=0
-for i in range(0,len(matrices)):
-    suma=suma+matrices[i]
-promedio=suma/number
+#suma=0
+#for i in range(0,len(matrices)):
+#    suma=suma+matrices[i]
+#promedio=suma/number
 
-suma=0
-for i in range(0,len(matrices)):
-    error=(matrices[i]-promedio)**2
-    suma=suma+error
-varianza=(suma)/number
-desv=varianza**0.5
-np.save('/root/farmware/OPENCLTEST/promedios',promedio)
-np.save('/root/farmware/OPENCLTEST/varianzas',desv)
+#suma=0
+#for i in range(0,len(matrices)):
+  #  error=(matrices[i]-promedio)**2
+ #   suma=suma+error
+#varianza=(suma)/number
+#desv=varianza**0.5
+#np.save('/root/farmware/OPENCLTEST/promedios',promedio)
+#np.save('/root/farmware/OPENCLTEST/varianzas',desv)
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 
