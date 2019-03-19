@@ -72,7 +72,7 @@ def fill_array(matrix,list):
 #################################################################################################################################
 matrices=[]
 number=100
-for i in range(number):
+for num in range(number):
       CeleryPy.move_absolute((550,345,0),(0,0,0),150)
       #CeleryPy.move_absolute((500,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
@@ -121,23 +121,23 @@ for i in range(number):
         rows,cols=array_shape(holes)
         matrix=np.zeros((rows,cols,2))
         matrix=fill_array(matrix,holes) 
-        #send_message(message='TUDO BEM', message_type='success', channel='toast')
         np.save('/root/farmware/array',matrix)
         matrices.append(matrix)
-        #CeleryPy.move_absolute((550,450,-255),(0,0,0),200)
-        #x=matrix[:,:,0]-7
-        #y=matrix[:,:,1]+7
-        #coordenadas00.append([x,y])
-      #  CeleryPy.move_absolute((int(x),int(y),-259),(0,0,0),70)
-       # for i in range(rows):
-       #   for j in range(cols):
-       #     x=matrix[i,j,0]-7
-       #     y=matrix[i,j,1]+7
-       #     CeleryPy.move_absolute((int(x),int(y),-255),(0,0,0),70)
-      if len(PD.plant_db.coordinate_locations) == 0:
-        send_message(message='NO HOLES', message_type='error', channel='toast')
-      #CeleryPy.move_absolute((0,0,0),(0,0,0),250)
-        #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
+        suma=0
+        for i in range(0,len(matrices)):
+            suma=suma+matrices[i]
+        promedio=suma/number  
+
+        suma=0
+        for i in range(0,len(matrices)):
+            error=(matrices[i]-promedio)**2
+            suma=suma+error
+        varianza=(suma)/number
+        desv=varianza**0.5
+        np.save('/root/farmware/OPENCLTEST/promedios',promedio)
+        np.save('/root/farmware/OPENCLTEST/varianzas',desv)
+       #if len(PD.plant_db.coordinate_locations) == 0:
+        send_message(message=str(num), message_type='success', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
       
 suma=0
