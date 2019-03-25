@@ -13,6 +13,7 @@ import numpy as np
 from PlantDetection import PlantDetection
 from farmware_tools import device
 import CeleryPy
+import time
 
 #x=DB()
 #y=x.get_image(95)
@@ -21,7 +22,7 @@ weeder=(20,553,-402)
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
 #send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
-print(file)
+start=time.time()
 img2 = cv2.imread(file,1)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
@@ -61,8 +62,11 @@ PD = PlantDetection(
             HSV_min=[49,95,50],HSV_max=[110,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
+end=time.time()
+milis=end-start
+log("TIEMPO DE PROCESAMIENTO: {}".format(milis))
 if len(PD.plant_db.coordinate_locations) >= 1:
-  O=len(PD.plant_db.coordinate_locations)
+  #O=len(PD.plant_db.coordinate_locations)
   dir_path='/root/farmware'
   matrix=np.load(dir_path+'/'+'array.npy')
   for coordinate_location in PD.plant_db.coordinate_locations:
