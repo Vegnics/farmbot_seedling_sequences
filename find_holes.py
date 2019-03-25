@@ -69,18 +69,18 @@ def fill_array(matrix,list):
             matrix[j,i]=sortedlistij[j]
     return matrix
 def mergearrays(matrix1,matrix2):
-  res_matrix=matrix1
-  col2=matrix2[:,0,:]
-  for i in range(matrix1.shape[1]):
-      col1=matrix1[:,i,:]
-      res=sum(abs(col2[0]-col1[0])+abs(col2[1]-col1[1]))/col1.shape[0]
-      print(res)
-      if res<4 :
-          subindex=i
-          break
-  counter=matrix1.shape[0]-subindex
-  res_matrix=np.concatenate((res_matrix[:,:,:],matrix2[:,counter:,:]),axis=1)
-  return res_matrix
+    res_matrix=matrix1
+    col2=matrix2[:,0,:]
+    for i in range(matrix1.shape[1]):
+        col1=matrix1[:,i,:]
+        res=sum(abs(col2[0]-col1[0])+abs(col2[1]-col1[1]))/col1.shape[0]
+        print(res)
+        if res<4 :
+            subindex=i
+            break
+    counter=matrix1.shape[0]-subindex
+    res_matrix=np.concatenate((res_matrix[:,:,:],matrix2[:,counter:,:]),axis=1)
+    return res_matrix
   
 #################################################################################################################################
 number=1
@@ -166,7 +166,7 @@ for num in range(number):
         matrix01=np.zeros((rows,cols,2))
         matrix01=fill_array(matrix01,holes) 
       matrix=mergearrays(matrix00,matrix01)
-        np.save('/root/farmware/array',matrix)
+      np.save('/root/farmware/array',matrix)
       if len(PD.plant_db.coordinate_locations) == 0:
         send_message(message='NO HOLES', message_type='error', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
