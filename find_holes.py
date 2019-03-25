@@ -81,6 +81,7 @@ def mergearrays(matrix1,matrix2):
     counter=matrix1.shape[1]-subindex
     log(str(counter))
     res_matrix=np.concatenate((res_matrix[:,:,:],matrix2[counter:,:,:]),axis=0)
+    log(str(res_matrix.shape))
     return res_matrix
   
 #################################################################################################################################
