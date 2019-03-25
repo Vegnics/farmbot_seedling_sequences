@@ -179,7 +179,7 @@ for num in range(number):
       image=invert(img2)
       image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
       res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
-      loc = np.where( res >= 0.6)
+      loc = np.where( res >= 0.58)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
       new_image=img2
@@ -204,7 +204,7 @@ for num in range(number):
         rows,cols=array_shape(holes)
         matrix10=np.zeros((rows,cols,2))
         matrix10=fill_array(matrix10,holes) 
-        matrix10=matrix10[:,0:5,:]
+        matrix10=matrix10[:,0:6,:]
         log(str(matrix10.shape))
       #######___________________________________________________-####################################
       CeleryPy.move_absolute((845,600,0),(0,0,0),150)
@@ -214,7 +214,7 @@ for num in range(number):
       image=invert(img2)
       image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
       res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
-      loc = np.where( res >= 0.6)
+      loc = np.where( res >= 0.58)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
       new_image=img2
@@ -239,7 +239,7 @@ for num in range(number):
         rows,cols=array_shape(holes)
         matrix11=np.zeros((rows,cols,2))
         matrix11=fill_array(matrix11,holes) 
-        matrix11=matrix11[:,0:5,:]
+        matrix11=matrix11[:,0:6,:]
         log(str(matrix11.shape))
       matrix=mergearrays(matrix10,matrix11)
       log(str(matrix.shape))
