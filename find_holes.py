@@ -132,6 +132,7 @@ for num in range(number):
         rows,cols=array_shape(holes)
         matrix00=np.zeros((rows,cols,2))
         matrix00=fill_array(matrix00,holes) 
+        log(str(matrix00.shape))
 #######___________________________________________________-####################################
       CeleryPy.move_absolute((500,600,0),(0,0,0),150)
       CeleryPy.wait(5000)
@@ -165,6 +166,7 @@ for num in range(number):
         rows,cols=array_shape(holes)
         matrix01=np.zeros((rows,cols,2))
         matrix01=fill_array(matrix01,holes) 
+        log(str(matrix01.shape))
       matrix=mergearrays(matrix00,matrix01)
       np.save('/root/farmware/array',matrix)
       if len(PD.plant_db.coordinate_locations) == 0:
