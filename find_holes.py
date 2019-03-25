@@ -73,12 +73,12 @@ def mergearrays(matrix1,matrix2):
     row2=matrix2[0,:,:]
     for i in range(matrix1.shape[0]):
         row1=matrix1[i,:,:]
-        res=sum(abs(row2[0]-row1[0])+abs(row2[1]-row1[1]))/row1.shape[0]
+        res=sum(abs(row2[0]-row1[0])+abs(row2[1]-row1[1]))/row1.shape[1]
         log(str(res))
         if res<4 :
             subindex=i
             break
-    counter=matrix1.shape[1]-subindex
+    counter=matrix1.shape[0]-subindex
     log(str(counter))
     res_matrix=np.concatenate((res_matrix[:,:,:],matrix2[counter:,:,:]),axis=0)
     log(str(res_matrix.shape))
