@@ -239,6 +239,8 @@ for num in range(number):
         matrix11=np.zeros((rows,cols,2))
         matrix11=fill_array(matrix11,holes) 
         log(str(matrix11.shape))
+      matrix=mergearrays(matrix10,matrix11)
+      np.save('/root/farmware/array2',matrix)
       if len(PD.plant_db.coordinate_locations) == 0:
         send_message(message='NO HOLES', message_type='error', channel='toast')
       CeleryPy.move_absolute((0,0,0),(0,0,0),200)
