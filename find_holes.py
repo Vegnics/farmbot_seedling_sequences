@@ -172,14 +172,14 @@ for num in range(number):
       matrix=mergearrays(matrix00,matrix01)
       np.save('/root/farmware/array',matrix)
       #######________________SEGUNDA MATRIZ___________________________________-####################################
-      CeleryPy.move_absolute((845,300,0),(0,0,0),150)
+      CeleryPy.move_absolute((845,330,0),(0,0,0),150)
       CeleryPy.wait(5000)
       file=Capture().capture()
       img2 = cv2.imread(file,1)
       image=invert(img2)
       image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
       res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
-      loc = np.where( res >= 0.55)
+      loc = np.where( res >= 0.6)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
       new_image=img2
