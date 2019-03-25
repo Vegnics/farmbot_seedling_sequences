@@ -199,11 +199,12 @@ for num in range(number):
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              if coordinate_location[2]>10.5:
+              if 15>coordinate_location[2]>10.5:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix10=np.zeros((rows,cols,2))
         matrix10=fill_array(matrix10,holes) 
+        matrix10=matrix10[:,0:5,:]
         log(str(matrix10.shape))
       #######___________________________________________________-####################################
       CeleryPy.move_absolute((845,600,0),(0,0,0),150)
@@ -233,14 +234,14 @@ for num in range(number):
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              if coordinate_location[2]>10.5:
+              if 15>coordinate_location[2]>10.5:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix11=np.zeros((rows,cols,2))
         matrix11=fill_array(matrix11,holes) 
+        matrix11=matrix11[:,0:5,:]
         log(str(matrix11.shape))
       matrix=mergearrays(matrix10,matrix11)
-      matrix=matrix[0:11,0:5,:]
       log(str(matrix.shape))
       np.save('/root/farmware/array2',matrix)
       if len(PD.plant_db.coordinate_locations) == 0:
