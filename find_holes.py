@@ -74,7 +74,7 @@ matrices=[]
 number=1
 for num in range(number):
       #CeleryPy.move_absolute((550,345,0),(0,0,0),150)
-      CeleryPy.move_absolute((500,500,0),(0,0,0),150)
+      CeleryPy.move_absolute((600,500,0),(0,0,0),150)
       CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
