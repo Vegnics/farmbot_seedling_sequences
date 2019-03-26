@@ -93,7 +93,7 @@ HH=110
 SH=255
 VH=255
 ###################################################################
-CeleryPy.move_absolute((1415,210,0),(0,0,0),150)
+CeleryPy.move_absolute((1415,205,0),(0,0,0),150)
 CeleryPy.wait(5000)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
