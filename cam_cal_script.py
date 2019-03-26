@@ -68,7 +68,7 @@ log("TIEMPO DE PROCESAMIENTO: {}".format(milis))
 if len(PD.plant_db.coordinate_locations) >= 1:
   #O=len(PD.plant_db.coordinate_locations)
   dir_path='/root/farmware'
-  matrix=np.load(dir_path+'/'+'array.npy')
+  matrix=np.load(dir_path+'/'+'array2.npy')
   for coordinate_location in PD.plant_db.coordinate_locations:
         log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
                     coordinate_location[0],
