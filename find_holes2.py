@@ -82,7 +82,7 @@ def mergearrays(matrix1,matrix2):
     log(str(counter))
     res_matrix=np.concatenate((res_matrix[:,:,:],matrix2[counter:,:,:]),axis=0)
     log(str(res_matrix.shape))
-return res_matrix
+    return res_matrix
       
 #######________________SEGUNDA MATRIZ___________________________________-####################################
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
