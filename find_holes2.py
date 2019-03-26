@@ -98,7 +98,7 @@ CeleryPy.wait(5000)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
 image_gray=cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
-circles=cv2.HoughCircles(image_gray,cv2.HOUGH_GRADIENT,1,20,param1=50,param2=30,minRadius=15,maxRadius=34)
+circles=cv2.HoughCircles(image_gray,cv2.HOUGH_GRADIENT,1,12,param1=65,param2=30,minRadius=15,maxRadius=34)
 circles = np.uint16(np.around(circles))
 for i in circles[0,:]:
  cv2.circle(img2,(i[0],i[1]),15,(0,255,0),cv2.FILLED)
