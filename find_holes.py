@@ -200,14 +200,14 @@ for num in range(number):
       PD = PlantDetection(
                   image='/tmp/images/1549138027.jpg',
                   blur=2, morph=2, iterations=3, from_env_var=True, coordinates=True,
-                  array=[{"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 4}],
+                  array=[{"size": 5, "kernel": 'ellipse', "type": 'erode', "iters": 6}],
                   HSV_min=[49,95,50],HSV_max=[110,255,255]
                   )
       PD.detect_plants() # detect coordinates and sizes of weeds and plants
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              if 19>coordinate_location[2]>10.5:
+              if 19>coordinate_location[2]>7:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix10=np.zeros((rows,cols,2))
