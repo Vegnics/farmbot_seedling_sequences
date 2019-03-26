@@ -92,6 +92,7 @@ for num in range(number):
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
       template2=cv2.imread(dir_path+'/'+'template2.jpg',0)
+      template3=cv2.imread(dir_path+'/'+'template3.jpg',0)
       template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
       w, h = template.shape[::-1]
 
