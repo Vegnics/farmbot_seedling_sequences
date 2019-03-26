@@ -91,6 +91,7 @@ for num in range(number):
       CeleryPy.wait(5000)
       dir_path = os.path.dirname(os.path.realpath(__file__))
       template=cv2.imread(dir_path+'/'+'template.jpg',1)
+      template2=cv2.imread(dir_path+'/'+'template2.jpg',0)
       template=cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
       w, h = template.shape[::-1]
 
@@ -178,7 +179,8 @@ for num in range(number):
       img2 = cv2.imread(file,1)
       image=invert(img2)
       image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-      res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
+      w, h = template2.shape[::-1]
+      res = cv2.matchTemplate(image_gray,template2,cv2.TM_CCOEFF_NORMED)
       loc = np.where( res >= 0.58)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
@@ -213,7 +215,7 @@ for num in range(number):
       img2 = cv2.imread(file,1)
       image=invert(img2)
       image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-      res = cv2.matchTemplate(image_gray,template,cv2.TM_CCOEFF_NORMED)
+      res = cv2.matchTemplate(image_gray,template2,cv2.TM_CCOEFF_NORMED)
       loc = np.where( res >= 0.58)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
