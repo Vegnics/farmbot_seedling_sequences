@@ -220,6 +220,11 @@ for num in range(number):
       loc = np.where( res >= 0.7)
       for pt in zip(*loc[::-1]):
           cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
+      
+      res = cv2.matchTemplate(image_gray,template3,cv2.TM_CCOEFF_NORMED)
+      loc = np.where( res >= 0.7)
+      for pt in zip(*loc[::-1]):
+          cv2.circle(img2,(int(pt[0]+w/2),int(pt[1]+h/2)),15,(0,255,0),cv2.FILLED)
       new_image=img2
       cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
       mask=create_mask(new_image,np.array([HL,SL,VL]),np.array([HH,SH,VH]))###Creamos la máscara
