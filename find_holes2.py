@@ -119,7 +119,7 @@ PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
   holes=[]
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if 19>coordinate_location[2]>7 and coordinate_location[0]<950:
+    if 19>coordinate_location[2]>7 and coordinate_location[0]<950 and coordinate_location[1]>200:
      holes.append([coordinate_location[0],coordinate_location[1]])  
   rows,cols=array_shape(holes)
   matrix10=np.zeros((rows,cols,2))
@@ -153,7 +153,7 @@ PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
   holes=[]
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if 19>coordinate_location[2]>7 and coordinate_location[0]<950:
+    if 19>coordinate_location[2]>7 and coordinate_location[0]<950 and coordinate_location[1]<740:
      holes.append([coordinate_location[0],coordinate_location[1]])  
   rows,cols=array_shape(holes)
   matrix11=np.zeros((rows,cols,2))
