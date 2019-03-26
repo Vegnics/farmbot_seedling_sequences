@@ -93,7 +93,7 @@ HH=110
 SH=255
 VH=255
 ###################################################################
-CeleryPy.move_absolute((845,250,0),(0,0,0),150)
+CeleryPy.move_absolute((1130,250,0),(0,0,0),150)
 CeleryPy.wait(5000)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
@@ -119,7 +119,7 @@ PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
   holes=[]
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if 19>coordinate_location[2]>7 and coordinate_location[0]<950:
+    if 19>coordinate_location[2]>7 and coordinate_location[0]<1230:
      holes.append([coordinate_location[0],coordinate_location[1]])  
   rows,cols=array_shape(holes)
   matrix10=np.zeros((rows,cols,2))
@@ -127,7 +127,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   matrix10=matrix10[:,0:6,:]
   log(str(matrix10.shape))
 ######################_______________________________________________________##################################################
-CeleryPy.move_absolute((845,600,0),(0,0,0),150)
+CeleryPy.move_absolute((1130,600,0),(0,0,0),150)
 CeleryPy.wait(5000)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
@@ -153,7 +153,7 @@ PD.detect_plants() # detect coordinates and sizes of weeds and plants
 if len(PD.plant_db.coordinate_locations) >= 1:
   holes=[]
   for coordinate_location in PD.plant_db.coordinate_locations:
-    if 19>coordinate_location[2]>7 and coordinate_location[0]<950:
+    if 19>coordinate_location[2]>7 and coordinate_location[0]<1230:
      holes.append([coordinate_location[0],coordinate_location[1]])  
   rows,cols=array_shape(holes)
   matrix11=np.zeros((rows,cols,2))
