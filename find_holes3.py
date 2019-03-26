@@ -162,7 +162,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   log(str(matrix11.shape))
 matrix=mergearrays(matrix10,matrix11)
 log(str(matrix.shape))
-np.save('/root/farmware/array2',matrix)
+np.save('/root/farmware/array3',matrix)
 if len(PD.plant_db.coordinate_locations) == 0:
  send_message(message='NO HOLES', message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),200)    
