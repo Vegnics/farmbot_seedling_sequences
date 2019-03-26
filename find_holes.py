@@ -131,7 +131,7 @@ for num in range(number):
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              if coordinate_location[2]>10.5:
+              if coordinate_location[2]>10.5 and coordinate_location[1]>200:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix00=np.zeros((rows,cols,2))
@@ -165,7 +165,7 @@ for num in range(number):
       if len(PD.plant_db.coordinate_locations) >= 1:
         holes=[]
         for coordinate_location in PD.plant_db.coordinate_locations:
-              if coordinate_location[2]>10.5:
+              if coordinate_location[2]>10.5 and coordinate_location[1]<740:
                 holes.append([coordinate_location[0],coordinate_location[1]])  
         rows,cols=array_shape(holes)
         matrix01=np.zeros((rows,cols,2))
