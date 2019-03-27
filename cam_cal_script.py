@@ -101,7 +101,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           if i%3==0:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-8
-            ysig=ysig+16 
+            ysig=ysig+13 
           elif i%3==1:
             xsig,ysig=matrix3[ymatsig,xmatsig]
             xsig=xsig-4
