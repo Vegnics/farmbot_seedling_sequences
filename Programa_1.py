@@ -35,14 +35,14 @@ CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(200)
 CeleryPy.write_pin(number=4, value=1, mode=0)
  
-x,y=matrix[0,0]
+x,y=matrix[0,1]
 xsig,ysig=matrix2[0,0]
 xsig=xsig-6
 ysig=ysig+9 
 x=x-9
 y=y+9
 CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-CeleryPy.move_absolute((x,y,-290),(0,0,0),100)
+CeleryPy.move_absolute((x,y,-302),(0,0,0),100)
 CeleryPy.wait(500)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(500)
