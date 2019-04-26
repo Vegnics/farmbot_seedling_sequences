@@ -1,4 +1,4 @@
-mport os
+import os
 import sys
 from CeleryPy import log
 from CeleryPy import send_message
@@ -15,15 +15,11 @@ from farmware_tools import device
 import CeleryPy
 import time
 
-#x=DB()
-#y=x.get_image(95)
-device.set_pin_io_mode(1,4)
-weeder=(20,553,-402)
+
 CeleryPy.move_absolute((500,500,0),(0,0,0),150)
-#send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
-start=time.time()
 img2 = cv2.imread(file,1)
+
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
   mask=cv2.inRange(imghsv,lowergreen,uppergreen)
@@ -42,22 +38,22 @@ def normalize(array):
     array=cv2.merge([b_n, g_n, r_n])
     return array
 def colorize(image,alpha,beta,theta):##función para cambiar el brillo y el contraste de imagen
- #alpha = 1.32
- #beta=60
- #theta=1.8
- n_image = alpha**(image/beta+theta)#+theta
- n_image=normalize(n_image)
- b,g,r=cv2.split(n_image)
- kernel=(1/16)*np.ones([4,4],dtype=np.uint8)
- b_n=cv2.filter2D(b,-1,kernel)
- g_n=cv2.filter2D(g,-1,kernel)
- r_n=cv2.filter2D(r,-1,kernel)
- f=0.6
- B=b-f*b_n
- G=g-f*g_n
- R=r-f*r_n
- n_image=cv2.merge([B,G,R])+20
- return n_image.astype(np.uint8)
+   #alpha = 1.32
+   #beta=60
+   #theta=1.8
+   n_image = alpha**(image/beta+theta)#+theta
+   n_image=normalize(n_image)
+   b,g,r=cv2.split(n_image)
+   kernel=(1/16)*np.ones([4,4],dtype=np.uint8)
+   b_n=cv2.filter2D(b,-1,kernel)
+   g_n=cv2.filter2D(g,-1,kernel)
+   r_n=cv2.filter2D(r,-1,kernel)
+   f=0.6
+   B=b-f*b_n
+   G=g-f*g_n
+   R=r-f*r_n
+   n_image=cv2.merge([B,G,R])+20
+   return n_image.astype(np.uint8)
 
 
 new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
@@ -80,15 +76,13 @@ cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
-            blur=5, morph=2, iterations=5, from_env_var=True, coordinates=True,
-            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 1},
-                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 1}],
+            blur=3, morph=2, iterations=2, from_env_var=True, coordinates=True,
+            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
+                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
             HSV_min=[23,40,20],HSV_max=[110,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
-end=time.time()
-milis=end-start
-log("TIEMPO DE PROCESAMIENTO: {}".format(milis))
+
 if len(PD.plant_db.coordinate_locations) >= 1:
   #O=len(PD.plant_db.coordinate_locations)
   dir_path='/root/farmware'
@@ -103,7 +97,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          log('{},{}--r={}'.format(ymat,xmat,coordinate_location[2]))
+          log("{},{}  r:{}".format(ymat,xmat,coordinate_location[2]))
          
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
