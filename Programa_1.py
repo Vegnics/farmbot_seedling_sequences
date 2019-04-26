@@ -60,7 +60,7 @@ def colorize(image,alpha,beta,theta):##función para cambiar el brillo y el cont
  return n_image.astype(np.uint8)
 
 
-new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
+new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
@@ -70,8 +70,9 @@ HH=110
 SH=255
 VH=255
 ###################################################################
+
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
-mask = create_mask(aux, np.array([23, 40, 20]), np.array([110, 255, 255]))
+mask = create_mask(new_image, np.array([23, 40, 20]), np.array([110, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
