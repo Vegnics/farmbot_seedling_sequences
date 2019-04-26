@@ -68,7 +68,7 @@ VH=255
 ###################################################################
 
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
-mask = create_mask(new_image, np.array([23, 40, 20]), np.array([110, 255, 255]))
+mask = create_mask(new_image, np.array([23, 70, 50]), np.array([100, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
