@@ -103,7 +103,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          log('{},{}--r='.format(ymat,xmat,coordinate_location[2]))
+          log('{},{}--r={}'.format(ymat,xmat,coordinate_location[2]))
          
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
