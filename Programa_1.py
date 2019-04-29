@@ -68,7 +68,7 @@ VH=255
 ###################################################################
 
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
-mask = create_mask(new_image, np.array([23, 85, 50]), np.array([90, 255, 255]))
+mask = create_mask(new_image, np.array([30, 85, 50]), np.array([90, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
@@ -79,7 +79,7 @@ PD = PlantDetection(
             blur=0, morph=2, iterations=0, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 0},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 0}],
-            HSV_min=[23,85,50],HSV_max=[90,255,255]
+            HSV_min=[30,85,50],HSV_max=[90,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
