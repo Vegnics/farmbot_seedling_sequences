@@ -355,14 +355,16 @@ class Image(object):
             cv2.drawContours(
                 self.images['marked'], [contour], 0, (0, 255, 0), 3)
         elif draw_contours:
-            cv2.drawContours(
-                self.images['contoured'], [contour], 0, (255, 255, 255), 3)
-            cv2.drawContours(
-                self.images['marked'], [contour], 0, (0, 0, 0),
-                CONTOUR_LINEWIDTH * 3)
-            cv2.drawContours(
-                self.images['marked'], [contour], 0, (255, 255, 255),
-                CONTOUR_LINEWIDTH)
+            mom=cv2.moments(contour)
+            if mom['m00']>25:
+                cv2.drawContours(
+                    self.images['contoured'], [contour], 0, (255, 255, 255), 3)
+                cv2.drawContours(
+                    self.images['marked'], [contour], 0, (0, 0, 0),
+                    CONTOUR_LINEWIDTH * 3)
+                cv2.drawContours(
+                    self.images['marked'], [contour], 0, (255, 255, 255),
+                    CONTOUR_LINEWIDTH)
 
     def _save_calibration_contour(self, i, only_one_object, location=None):
         if i == 0:
