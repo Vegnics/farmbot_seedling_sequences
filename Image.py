@@ -356,7 +356,7 @@ class Image(object):
                 self.images['marked'], [contour], 0, (0, 255, 0), 3)
         elif draw_contours:
             mom=cv2.moments(contour)
-            if mom['m00']>25:
+            if mom['m00']>38:
                 cv2.drawContours(
                     self.images['contoured'], [contour], 0, (255, 255, 255), 3)
                 cv2.drawContours(
