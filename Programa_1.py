@@ -79,7 +79,7 @@ PD = PlantDetection(
             blur=3, morph=2, iterations=2, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 2},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
-            HSV_min=[23,40,20],HSV_max=[110,255,255]
+            HSV_min=[23,70,50],HSV_max=[100,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
