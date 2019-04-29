@@ -16,7 +16,7 @@ import CeleryPy
 import time
 
 
-CeleryPy.move_absolute((500,450,0),(0,0,0),150)
+CeleryPy.move_absolute((500,440,0),(0,0,0),150)
 file=Capture().capture()
 img2 = cv2.imread(file,1)
 
