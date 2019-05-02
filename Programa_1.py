@@ -99,7 +99,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           xmat=minloc[0]
           ymat=minloc[1]
           detected.append("{} en eje Y, {} en eje X , r={}".format(ymat,xmat,coordinate_location[2]))
-   send_message(message=str(detected), message_type='warn', channel='toast')      
+  send_message(message=str(detected), message_type='warn', channel='toast')      
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
