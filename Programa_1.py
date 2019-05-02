@@ -100,7 +100,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          detected.append("{} en eje Y, {} en eje X , r={}".format(ymat+1,xmat+1,coordinate_location[2]))
+          detected.append("{} en eje Y, {} en eje X , r={2.2f}".format(ymat+1,xmat+1,coordinate_location[2]))
   send_message(message=str(detected), message_type='warn', channel='toast')      
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
