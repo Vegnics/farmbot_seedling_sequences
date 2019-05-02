@@ -79,7 +79,7 @@ PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=0, morph=2, iterations=0, from_env_var=True, coordinates=True,
             array=[{"size": 5, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
-                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
+                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
             HSV_min=[45,65,40],HSV_max=[95,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
@@ -94,7 +94,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   send_message(message='TUDO BEM', message_type='success', channel='toast')
   detected=[]
   for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
-    if coordinate_location[2] > 5:
+    if coordinate_location[2] > 9.5:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
