@@ -78,9 +78,9 @@ cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
             blur=0, morph=2, iterations=0, from_env_var=True, coordinates=True,
-            array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
-                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[45,75,40],HSV_max=[95,255,255]
+            array=[{"size": 4, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
+                   {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
+            HSV_min=[45,65,40],HSV_max=[95,255,255]
             )
 PD.detect_plants() # detect coordinates and sizes of weeds and plants
 
