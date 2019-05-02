@@ -73,7 +73,7 @@ mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 mask = cv2.dilate(mask,kernel,iterations=2)
 mask = cv2.erode(mask,kernel,iterations=2)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
-#image3=cv2.medianBlur(image3,5)
+image3=cv2.medianBlur(image3,5)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 
 PD = PlantDetection(
@@ -100,7 +100,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          detected.append("{} en eje Y, {} en eje X , r={2.2f}".format(ymat+1,xmat+1,coordinate_location[2]))
+          detected.append("{} en eje Y, {} en eje X , r={:.2f}".format(ymat+1,xmat+1,coordinate_location[2]))
   send_message(message=str(detected), message_type='warn', channel='toast')      
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
