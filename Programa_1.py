@@ -91,14 +91,15 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   matrix3=np.load(dir_path+'/'+'array3.npy')
   matrix4=np.load(dir_path+'/'+'array4.npy')
   send_message(message='TUDO BEM', message_type='success', channel='toast')
+  detected=[]
   for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
     if coordinate_location[2] > 5:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           xmat=minloc[0]
           ymat=minloc[1]
-          log("{},{}  r:{}".format(ymat,xmat,coordinate_location[2]))
-         
+          detected.append("{} en eje Y, {} en eje X , r={}".format(ymat,xmat,coordinate_location[2]))
+   send_message(message=str(detected), message_type='warn', channel='toast')      
 if len(PD.plant_db.coordinate_locations) == 0:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
