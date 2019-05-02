@@ -71,14 +71,13 @@ kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
 mask = create_mask(new_image, np.array([45, 85, 50]), np.array([90, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 mask = cv2.dilate(mask,kernel,iterations=2)
-mask = cv2.erode(mask,kernel,iterations=1)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 
 PD = PlantDetection(
             image='/tmp/images/1549138027.jpg',
-            blur=0, morph=2, iterations=1, from_env_var=True, coordinates=True,
+            blur=0, morph=2, iterations=0, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 2}],
             HSV_min=[45,75,40],HSV_max=[95,255,255]
