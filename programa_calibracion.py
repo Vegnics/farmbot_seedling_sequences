@@ -9,8 +9,10 @@ img = cv2.imread(file,1)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Find the chess board corners
 log('TUDO BEM')
-ret=True
-corners = cv2.findChessboardCorners(gray, (7,7))
+try:
+    ret,corners = cv2.findChessboardCorners(gray, (7,7),flags=3)
+except AssertionError as error:
+    log(str(error))
 # If found, add object points, image points (after refining them)
 objpoints=[]
 imgpoints=[]
