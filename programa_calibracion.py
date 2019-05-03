@@ -24,4 +24,6 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.sh
 newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
 mapx, mapy = cv2.initUndistortRectifyMap(mtx, dist, None, newcameramtx, (w,h), 5)
 dst = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
+np.save('/root/farmware/mtx',mtx)
+np.save('/root/farmware/dist',dist)
 cv2.imwrite('/tmp/images/1549138023.jpg',dst)
