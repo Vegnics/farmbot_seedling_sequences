@@ -3,16 +3,18 @@ import numpy as np
 import CeleryPy
 from Capture import Capture
 from CeleryPy import log
+try:
+    from cv2 import findChessboardCorners 
+except ImportError:
+    log('import error')
+
 CeleryPy.move_absolute((500,440,0),(0,0,0),150)
 file=Capture().capture()
 img = cv2.imread(file,1)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Find the chess board corners
 log('TUDO BEM')
-try:
-    ret,corners = cv2.findChessboardCorners(gray, (7,7),flags=3)
-except:
-    log('error')
+ret,corners = cv2.findChessboardCorners(gray,(7,7))
 # If found, add object points, image points (after refining them)
 objpoints=[]
 imgpoints=[]
