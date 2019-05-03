@@ -11,8 +11,8 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 log('TUDO BEM')
 try:
     ret,corners = cv2.findChessboardCorners(gray, (7,7),flags=3)
-except AssertionError as error:
-    log(str(error))
+except:
+    log('error')
 # If found, add object points, image points (after refining them)
 objpoints=[]
 imgpoints=[]
