@@ -1,0 +1,12 @@
+{
+ "package": "LOGGING",
+ "language": "python",
+ "author": "Paulo Linares",
+ "description": "Calibración Checkerboard",
+ "version": "1.0.0",
+ "min_os_version_major": 6,
+ "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/calibracion.json",
+ "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
+ "executable": "python",
+ "args": ["calibrate_camera-master/programa_calibracion.py"]
+}
