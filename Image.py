@@ -143,11 +143,11 @@ class Image(object):
             rows, cols = self.images['current'].shape
         mtrx = cv2.getRotationMatrix2D((int(cols / 2), int(rows / 2)),
                                        rotationangle, 1)
-         a=cv2.warpAffine(self.images['current'], mtrx, (cols, rows))
-         dir_path = os.path.dirname(os.path.realpath(__file__))
-         mapx=np.load(dir_path+'/'+'mapx.npy')
-         mapy=np.load(dir_path+'/'+'mapy.npy')
-         self.images['current'] =cv2.remap(a, mapx, mapy, cv2.INTER_LINEAR)
+        a=cv2.warpAffine(self.images['current'], mtrx, (cols, rows))
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        mapx=np.load(dir_path+'/'+'mapx.npy')
+        mapy=np.load(dir_path+'/'+'mapy.npy')
+        self.images['current'] =cv2.remap(a, mapx, mapy, cv2.INTER_LINEAR)
     def rotate_main_images(self, rotationangle):
         """Rotate relevant working images."""
         self.images['current'] = self.images['output']  # work on output image
