@@ -4,7 +4,7 @@ import CeleryPy
 from Capture import Capture
 from CeleryPy import log
 try:
-    from cv2 import calibrateCamera
+    from cv2 import remap
 except ImportError:
     log('import error')
 
