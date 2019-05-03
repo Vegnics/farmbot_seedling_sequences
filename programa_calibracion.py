@@ -1,6 +1,10 @@
 import cv2
 import numpy as np
-img=cv2.imread('checkerboard.jpg',1)
+import CeleryPy
+import Capture
+CeleryPy.move_absolute((500,440,0),(0,0,0),150)
+file=Capture().capture()
+img = cv2.imread(file,1)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Find the chess board corners
 ret, corners = cv2.findChessboardCorners(gray, (7,7), None)
@@ -15,14 +19,9 @@ if ret == True:
     cv2.drawChessboardCorners(img_aux, (7,7), corners, ret)
     objpoints.append(objp)
     imgpoints.append(corners)
-    cv2.imshow('img', img_aux)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 h, w = img.shape[:2]
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
 mapx, mapy = cv2.initUndistortRectifyMap(mtx, dist, None, newcameramtx, (w,h), 5)
 dst = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
-cv2.imshow('img2', dst)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imwrite('/tmp/images/1549138023.jpg',dst)
