@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import CeleryPy
-import Capture
+from Capture import Capture
 CeleryPy.move_absolute((500,440,0),(0,0,0),150)
 file=Capture().capture()
 img = cv2.imread(file,1)
