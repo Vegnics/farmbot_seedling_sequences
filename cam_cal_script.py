@@ -22,7 +22,6 @@ weeder=(20,553,-402)
 CeleryPy.move_absolute((500,440,0),(0,0,0),150)
 #send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
-start=time.time()
 img2 = cv2.imread(file,1)
 def create_mask(image,lowergreen,uppergreen):##función para crear máscara a partir de valores máximos y minimos de HSV
   imghsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV_FULL)
@@ -63,7 +62,7 @@ def invert(imagem):
  return imagem
 
 
-new_image=colorize(img2)##obtenemos imagen con brillo y contraste modificados
+new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
 mask = create_mask(new_image, np.array([45, 85, 50]), np.array([90, 255, 255]))
