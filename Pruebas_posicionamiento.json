@@ -1,0 +1,13 @@
+
+{
+ "package": "Seedling Verification",
+ "language": "python",
+ "author": "Paulo Linares",
+ "description": "Verificaciòn del posicionamiento de la herramienta",
+ "version": "1.0.0",
+ "min_os_version_major": 6,
+ "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/programa_2_manifest.json",
+ "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
+ "executable": "python",
+ "args": ["calibrate_camera-master/Programa_2.py"]
+}
