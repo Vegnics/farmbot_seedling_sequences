@@ -9,7 +9,7 @@
  "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/Pruebas_posicionamiento.json",
  "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
  "executable": "python",
- "args": ["calibrate_camera-master/Programa_2.py"]
+ "args": ["calibrate_camera-master/Programa_2.py"],
  "config": [
   {"name": "row1", "label": "FILA DE MATRIZ 1", "value": 2 },
   {"name": "col1", "label": "COLUMNA DE MATRIZ 1", "value": 2 },
