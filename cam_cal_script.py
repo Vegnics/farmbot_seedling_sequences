@@ -65,7 +65,7 @@ def invert(imagem):
 new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
-mask = create_mask(new_image, np.array([45, 85, 50]), np.array([90, 255, 255]))
+mask = create_mask(new_image, np.array([45, 100, 60]), np.array([80, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 mask = cv2.dilate(mask,kernel,iterations=2)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
@@ -117,15 +117,15 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           if i%3==0:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-10
-            ysig=ysig+6
+            ysig=ysig+8
           elif i%3==1:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-10
-            ysig=ysig+6
+            ysig=ysig+8
           elif i%3==2:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-10
-            ysig=ysig+6
+            ysig=ysig+8
           x=x-7
           y=y+7
           CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
