@@ -12,11 +12,15 @@ from Capture import Capture
 import numpy as np
 from PlantDetection import PlantDetection
 from farmware_tools import device
+from farmware_tools import get_config_value
 import CeleryPy
 import time
-
+valueM1p=get_config_Value('LOGGING,row1)
+valueM1q=get_config_Value('LOGGING,col1)
+valueM2p=get_config_Value('LOGGING,row2)
+valueM2q=get_config_Value('LOGGING,row2)
 weeder=(20,553,-402)
-CeleryPy.move_absolute((500,440,0),(0,0,0),250)
+                          
 dir_path='/root/farmware'
 matrix=np.load(dir_path+'/'+'array.npy')
 matrix2=np.load(dir_path+'/'+'array2.npy')
@@ -34,10 +38,10 @@ CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(200)
 CeleryPy.write_pin(number=4, value=1, mode=0)
   
-xmat=minloc[0]
-ymat=minloc[1]
-xmatsig=int(np.clip(i%2,0,10))
-ymatsig=int(np.clip((i-xmatsig)/2,0,10))
+xmat=valueM1p
+ymat=valueM1q
+xmatsig=valueM2p
+ymatsig=valueM2q
 x,y=matrix[ymat,xmat]
 xsig,ysig=matrix2[ymatsig,xmatsig]
 xsig=xsig-4
