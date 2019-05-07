@@ -105,7 +105,7 @@ if len(PD.plant_db.coordinate_locations) >= 1:
   CeleryPy.write_pin(number=4, value=1, mode=0)
   
   for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
-    if coordinate_location[2] > 9:
+    if coordinate_location[2] > 10:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
