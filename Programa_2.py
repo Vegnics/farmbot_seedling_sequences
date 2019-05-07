@@ -15,11 +15,11 @@ from farmware_tools import device
 from farmware_tools import get_config_value
 import CeleryPy
 import time
-farmware_name = 'Movements calibration'
+farmware_name = "Movements calibration"
 valueM1p=get_config_value(farmware_name,config_name='row1')
 valueM1q=get_config_value(farmware_name,config_name='col1')
 valueM2p=get_config_value(farmware_name,config_name='row2')
-valueM2q=get_config_value(farmware_name,config_name='col1')
+valueM2q=get_config_value(farmware_name,config_name='col2')
 weeder=(20,553,-402)
                           
 dir_path='/root/farmware'
