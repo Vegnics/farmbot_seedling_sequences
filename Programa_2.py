@@ -15,10 +15,11 @@ from farmware_tools import device
 from farmware_tools import get_config_value
 import CeleryPy
 import time
-valueM1p=get_config_Value('LOGGING,row1)
-valueM1q=get_config_Value('LOGGING,col1)
-valueM2p=get_config_Value('LOGGING,row2)
-valueM2q=get_config_Value('LOGGING,row2)
+farmware_name = 'Movements calibration'
+valueM1p=get_config_Value(farmware_name,config_name='row1')
+valueM1q=get_config_Value(farmware_name,config_name='col1')
+valueM2p=get_config_Value(farmware_name,config_name='row2')
+valueM2q=get_config_Value(farmware_name,config_name='col1')
 weeder=(20,553,-402)
                           
 dir_path='/root/farmware'
@@ -27,6 +28,7 @@ matrix2=np.load(dir_path+'/'+'array2.npy')
 matrix3=np.load(dir_path+'/'+'array3.npy')
 matrix4=np.load(dir_path+'/'+'array4.npy')
 
+                        
 send_message(message='TUDO BEM', message_type='success', channel='toast')
 CeleryPy.move_absolute(weeder,(0,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,0),150)
