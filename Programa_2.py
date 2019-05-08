@@ -47,7 +47,7 @@ ysig=ysig+4
 x=x-7
 y=y+7
 CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-CeleryPy.move_absolute((x,y,-279),(0,0,0),100)
+CeleryPy.move_absolute((x,y,-283),(0,0,0),100)
 CeleryPy.wait(500)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(2000)
@@ -56,7 +56,7 @@ CeleryPy.wait(500)
 CeleryPy.move_absolute((xsig,ysig,-200),(0,0,0),100)
 CeleryPy.move_absolute((xsig,ysig,-278),(0,0,0),100)
 CeleryPy.write_pin(number=4, value=1, mode=0)
-eleryPy.wait(400)
+CeleryPy.wait(400)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(400)
 CeleryPy.write_pin(number=4, value=1, mode=0)
