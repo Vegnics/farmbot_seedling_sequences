@@ -83,7 +83,7 @@ PD.detect_plants()
 
 if len(PD.plant_db.coordinate_locations) >= 1:
   #O=len(PD.plant_db.coordinate_locations)
-  dir_path='/root/farmware'
+  dir_path = os.path.dirname(os.path.realpath(__file__))
   matrix=np.load(dir_path+'/'+'array.npy')
   matrix2=np.load(dir_path+'/'+'array2.npy')
   matrix3=np.load(dir_path+'/'+'array3.npy')
