@@ -109,8 +109,8 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
-          xmat=minloc[0]
-          ymat=minloc[1]
+          xmat=minloc[0]-1
+          ymat=minloc[1]-1
           xmatsig=int(np.clip(i%2,0,10))
           ymatsig=int(np.clip((i-xmatsig)/2,0,10))
           x,y=matrix[ymat,xmat]
