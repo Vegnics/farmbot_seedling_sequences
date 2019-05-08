@@ -11,16 +11,20 @@ import cv2
 from Capture import Capture
 import numpy as np
 from PlantDetection import PlantDetection
-from farmware_tools import get_config_value,device
-import CeleryPy
-import time
-send_message(message='TUDO BEM', message_type='success', channel='toast')   
-farmware_name = 'Movements calibration'
-valueM1p=get_config_value(farmware_name,'row1',int)
-valueM1q=get_config_value(farmware_name,'col1',int)
-valueM2p=get_config_value(farmware_name,'row2',int)
-valueM2q=get_config_value(farmware_name,'col2',int)
-weeder=(20,553,-402)
+from farmware_tools import device
+try:
+  from farmware_tools import get_config_value
+  import CeleryPy
+  import time
+  send_message(message='TUDO BEM', message_type='success', channel='toast')   
+  farmware_name = 'Movements calibration'
+  valueM1p=get_config_value(farmware_name,'row1',int)
+  valueM1q=get_config_value(farmware_name,'col1',int)
+  valueM2p=get_config_value(farmware_name,'row2',int)
+  valueM2q=get_config_value(farmware_name,'col2',int)
+except Exception as error:
+    farmware_tools.device.log(repr(error))
+  weeder=(20,553,-402)
 send_message(message='TUDO BEM', message_type='success', channel='toast')                          
 dir_path = os.path.dirname(os.path.realpath(__file__))
 matrix=np.load(dir_path+'/'+'array.npy')
