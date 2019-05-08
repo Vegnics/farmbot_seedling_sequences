@@ -15,14 +15,14 @@ from farmware_tools import device
 from farmware_tools import get_config_value
 import CeleryPy
 import time
-farmware_name = "Movements calibration"
+farmware_name = 'Movements calibration'
 valueM1p=get_config_value(farmware_name,'row1',int)
 valueM1q=get_config_value(farmware_name,'col1',int)
 valueM2p=get_config_value(farmware_name,'row2',int)
 valueM2q=get_config_value(farmware_name,'col2',int)
 weeder=(20,553,-402)
 send_message(message='TUDO BEM', message_type='success', channel='toast')                          
-dir_path='/root/farmware'
+dir_path = os.path.dirname(os.path.realpath(__file__))
 matrix=np.load(dir_path+'/'+'array.npy')
 matrix2=np.load(dir_path+'/'+'array2.npy')
 matrix3=np.load(dir_path+'/'+'array3.npy')
