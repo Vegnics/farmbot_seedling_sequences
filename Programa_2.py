@@ -11,10 +11,10 @@ import cv2
 from Capture import Capture
 import numpy as np
 from PlantDetection import PlantDetection
-from farmware_tools import device
-from farmware_tools import get_config_value
+from farmware_tools import get_config_value,device
 import CeleryPy
 import time
+send_message(message='TUDO BEM', message_type='success', channel='toast')   
 farmware_name = 'Movements calibration'
 valueM1p=get_config_value(farmware_name,'row1',int)
 valueM1q=get_config_value(farmware_name,'col1',int)
