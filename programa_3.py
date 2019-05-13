@@ -58,6 +58,11 @@ def colorize(image,alpha,beta,theta):##función para cambiar el brillo y el cont
 
 new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
+mask_1=np.zeros((269,480),dtype=np.uint8)
+mask_2=np.ones((180,480),dtype=np.uint8)
+mask_3=np.zeros((191,480),dtype=np.uint8)
+mask2=np.concatenate((mask_1,mask_2,mask_3))
+new_image=cv2.bitwise_and(new_image,new_image,mask=mask2)
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=95
@@ -71,16 +76,8 @@ kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
 mask = create_mask(new_image, np.array([45, 85, 50]), np.array([90, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 mask = cv2.dilate(mask,kernel,iterations=2)mask1=np.zeros((269,480),dtype=np.uint8)
-mask2=np.ones((180,480),dtype=np.uint8)
-mask3=np.zeros((191,480),dtype=np.uint8)
-mask=np.concatenate((mask1,mask2,mask3))
-mask_1=np.zeros((269,480),dtype=np.uint8)
-mask_2=np.ones((180,480),dtype=np.uint8)
-mask_3=np.zeros((191,480),dtype=np.uint8)
-mask2=np.concatenate((mask_1,mask_2,mask_3))
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
 image3=cv2.medianBlur(image3,5)
-image3=cv2.bitwise_and(image3,image3,mask=mask)
 cv2.imwrite('/tmp/images/1549138027.jpg',image3)
 
 PD = PlantDetection(
