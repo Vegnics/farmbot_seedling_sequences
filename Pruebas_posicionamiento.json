@@ -10,9 +10,9 @@
  "executable": "python",
  "args": ["calibrate_camera-master/Programa_2.py"],
  "config": [
-    {"name": "row1", "label": "FILA DE MATRIZ 1", "value": 2 },
-    {"name": "col1", "label": "COLUMNA DE MATRIZ 1", "value": 2 },
-    {"name": "row2", "label": "FILA DE MATRIZ 2", "value": 2 },
-    {"name": "col2", "label": "COLUMNA DE MATRIZ 2", "value": 2 }
+    {"name": "row1", "label": "FILA DE MATRIZ 1 (0 - 5)", "value": 2 },
+    {"name": "col1", "label": "COLUMNA DE MATRIZ 1 (0 - 11)", "value": 2 },
+    {"name": "row2", "label": "FILA DE MATRIZ 2 (0 - 5)", "value": 2 },
+    {"name": "col2", "label": "COLUMNA DE MATRIZ 2 (0 - 11)", "value": 2 }
   ]
 } 
