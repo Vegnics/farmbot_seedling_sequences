@@ -61,8 +61,11 @@ cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 mask_1=np.zeros((269,480),dtype=np.uint8)
 mask_2=np.ones((180,480),dtype=np.uint8)
 mask_3=np.zeros((191,480),dtype=np.uint8)
-mask2=np.concatenate((mask_1,mask_2,mask_3),axis=0)
-new_image=cv2.bitwise_and(new_image,new_image,mask=mask2)
+try:
+  mask2=np.concatenate((mask_1,mask_2,mask_3),axis=0)
+  new_image=cv2.bitwise_and(new_image,new_image,mask=mask2)
+except:
+  pass
 ########SETEAMOS VALORES MÍNIMOS Y MÁXIMOS DE HSV##################
 HL=52
 SL=95
