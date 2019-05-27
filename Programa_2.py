@@ -46,7 +46,8 @@ xsig=xsig-4
 ysig=ysig+8
 x=x-7
 y=y+7
-CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
+CeleryPy.move_absolute((x-50,y,-205),(0,0,0),100)
+CeleryPy.move_absolute((x-50,y,-290),(0,0,0),100)
 CeleryPy.move_absolute((x,y,-290),(0,0,0),100)
 CeleryPy.wait(500)
 CeleryPy.write_pin(number=4, value=0, mode=0)
