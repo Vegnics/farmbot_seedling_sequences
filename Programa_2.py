@@ -43,13 +43,13 @@ ymatsig=valueM2q
 x,y=matrix[ymat,xmat]
 xsig,ysig=matrix2[ymatsig,xmatsig]
 xsig=xsig-4
-ysig=ysig+8
+ysig=ysig+4
 x=x-7
 y=y+7
 CeleryPy.move_absolute((x-22,y-10,-205),(0,0,0),100)
 CeleryPy.move_absolute((x-22,y-10,-270),(0,0,0),100)
 CeleryPy.move_absolute((x,y,-270),(0,0,0),100)
-CeleryPy.move_absolute((x,y,-281),(0,0,0),100)
+CeleryPy.move_absolute((x,y,-280),(0,0,0),100)
 CeleryPy.wait(500)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(2000)
