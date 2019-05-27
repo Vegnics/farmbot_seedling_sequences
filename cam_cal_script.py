@@ -117,19 +117,21 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           if i%3==0:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-4
-            ysig=ysig+4
+            ysig=ysig+8
           elif i%3==1:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-4
-            ysig=ysig+4
+            ysig=ysig+8
           elif i%3==2:
             xsig,ysig=matrix2[ymatsig,xmatsig]
             xsig=xsig-4
-            ysig=ysig+4
+            ysig=ysig+8
           x=x-7
           y=y+7
-          CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-289),(0,0,0),100)
+          CeleryPy.move_absolute((x-22,y-10,-205),(0,0,0),100)
+          CeleryPy.move_absolute((x-22,y-10,-270),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-270),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-283),(0,0,0),100)
           CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=0, mode=0)
           CeleryPy.wait(2000)
