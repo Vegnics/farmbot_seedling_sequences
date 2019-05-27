@@ -48,7 +48,7 @@ x=x-7
 y=y+7
 CeleryPy.move_absolute((x-22,y,-205),(0,0,0),100)
 CeleryPy.move_absolute((x-22,y,-275),(0,0,0),100)
-CeleryPy.move_absolute((x,y,-286),(0,0,0),100)
+CeleryPy.move_absolute((x,y,-281),(0,0,0),100)
 CeleryPy.wait(500)
 CeleryPy.write_pin(number=4, value=0, mode=0)
 CeleryPy.wait(2000)
