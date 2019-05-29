@@ -85,7 +85,7 @@ for cl in PD.plant_db.coordinate_locations:
   radios.append(cl[2])
 suma_radios=sum(radios)
 
-if suma_radios/len(PD.plant_db.coordinate_locations) >=17.0:
+if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
   #O=len(PD.plant_db.coordinate_locations)
   dir_path = os.path.dirname(os.path.realpath(__file__))
   matrix=np.load(dir_path+'/'+'array.npy')
@@ -109,7 +109,7 @@ if suma_radios/len(PD.plant_db.coordinate_locations) >=17.0:
   CeleryPy.write_pin(number=4, value=1, mode=0)
   
   for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
-    if coordinate_location[2] > 10:
+    if coordinate_location[2] > 10 and coordinate_location[2]<50:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
