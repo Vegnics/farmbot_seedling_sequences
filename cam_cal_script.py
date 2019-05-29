@@ -80,8 +80,12 @@ PD = PlantDetection(
             HSV_min=[46,55,45],HSV_max=[95,255,255]
             )
 PD.detect_plants()
+radios=[]
+for cl in PD.plant_db.coordinate_locations:
+  radios.append(cl[2]):
+suma_radios=sum(radios)
 
-if len(PD.plant_db.coordinate_locations) >= 1:
+if suma_radios/len(PD.plant_db.coordinate_locations) >= 8.5:
   #O=len(PD.plant_db.coordinate_locations)
   dir_path = os.path.dirname(os.path.realpath(__file__))
   matrix=np.load(dir_path+'/'+'array.npy')
@@ -158,11 +162,11 @@ if len(PD.plant_db.coordinate_locations) >= 1:
           CeleryPy.wait(200)
           CeleryPy.write_pin(number=4, value=1, mode=0)
           CeleryPy.wait(500)
-CeleryPy.move_absolute(weeder,(120,0,200),150)
-CeleryPy.move_absolute(weeder,(120,0,0),150)
-CeleryPy.move_absolute(weeder,(0,0,0),150)
-CeleryPy.move_absolute(weeder,(0,0,200),150)
-if len(PD.plant_db.coordinate_locations) == 0:
+  CeleryPy.move_absolute(weeder,(120,0,200),150)
+  CeleryPy.move_absolute(weeder,(120,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,0),150)
+  CeleryPy.move_absolute(weeder,(0,0,200),150)
+else:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
 CeleryPy.move_absolute((0,0,0),(0,0,0),250)
   #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
