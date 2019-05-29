@@ -77,7 +77,7 @@ PD = PlantDetection(
             blur=0, morph=2, iterations=1, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[46,55,45],HSV_max=[95,255,255]
+            HSV_min=[46,65,55],HSV_max=[95,255,255]
             )
 PD.detect_plants()
 radios=[]
