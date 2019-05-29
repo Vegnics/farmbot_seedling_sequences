@@ -82,7 +82,7 @@ PD = PlantDetection(
 PD.detect_plants()
 radios=[]
 for cl in PD.plant_db.coordinate_locations:
-  radios.append(cl[2]):
+  radios.append(cl[2])
 suma_radios=sum(radios)
 
 if suma_radios/len(PD.plant_db.coordinate_locations) >= 8.5:
