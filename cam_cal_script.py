@@ -85,7 +85,7 @@ for cl in PD.plant_db.coordinate_locations:
   radios.append(cl[2])
 suma_radios=sum(radios)
 
-if suma_radios/len(PD.plant_db.coordinate_locations) >= 8.5:
+if suma_radios/len(PD.plant_db.coordinate_locations) >=17.0:
   #O=len(PD.plant_db.coordinate_locations)
   dir_path = os.path.dirname(os.path.realpath(__file__))
   matrix=np.load(dir_path+'/'+'array.npy')
