@@ -136,7 +136,7 @@ if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
           CeleryPy.move_absolute((x-22,y-10,-270),(0,0,0),100)
           CeleryPy.move_absolute((x,y,-270),(0,0,0),100)
           #CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-292),(0,0,0),100)
+          CeleryPy.move_absolute((x,y,-290),(0,0,0),100)
           CeleryPy.wait(500)
           CeleryPy.write_pin(number=4, value=0, mode=0)
           CeleryPy.wait(2000)
