@@ -65,7 +65,7 @@ def invert(imagem):
 new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
-mask = create_mask(new_image, np.array([45, 100, 60]), np.array([80, 255, 255]))
+mask = create_mask(new_image, np.array([45, 110, 60]), np.array([80, 255, 255]))
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
 mask = cv2.dilate(mask,kernel,iterations=2)
 image3=cv2.bitwise_and(new_image,new_image,mask=mask)##aplicamos la máscara
@@ -77,7 +77,7 @@ PD = PlantDetection(
             blur=0, morph=2, iterations=1, from_env_var=True, coordinates=True,
             array=[{"size": 3, "kernel": 'ellipse', "type": 'dilate',  "iters": 3},
                    {"size": 3, "kernel": 'ellipse', "type": 'erode', "iters": 3}],
-            HSV_min=[46,65,55],HSV_max=[95,255,255]
+            HSV_min=[46,110,55],HSV_max=[95,255,255]
             )
 PD.detect_plants()
 radios=[]
