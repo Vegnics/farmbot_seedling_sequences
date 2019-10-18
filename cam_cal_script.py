@@ -109,7 +109,7 @@ if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
   CeleryPy.write_pin(number=4, value=1, mode=0)
   
   for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
-    if coordinate_location[2] > 18.0 and coordinate_location[2]<50.0:
+    if coordinate_location[2] > 15.0 and coordinate_location[2]<20.0:
           aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
           (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
           log(str(min))
