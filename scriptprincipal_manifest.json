@@ -8,5 +8,5 @@
  "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/scriptprincipal_manifest.json",
  "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
  "executable": "python",
- "args": ["calibrate_camera-master/scriptprincipal2.py"]
+ "args": ["calibrate_camera-master/scriptprincipal.py"]
 }
