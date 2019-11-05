@@ -40,29 +40,18 @@ def normalize(array):
     r_n=np.clip((r-minimum)*(255/maximum),0,255).astype(np.uint8)
     array=cv2.merge([b_n, g_n, r_n])
     return array
-def colorize(image,alpha,beta,theta):##función para cambiar el brillo y el contraste de imagen
-   #alpha = 1.32
-   #beta=60
-   #theta=1.8
-   n_image = alpha**(image/beta+theta)#+theta
-   n_image=normalize(n_image)
-   b,g,r=cv2.split(n_image)
-   kernel=(1/16)*np.ones([4,4],dtype=np.uint8)
-   b_n=cv2.filter2D(b,-1,kernel)
-   g_n=cv2.filter2D(g,-1,kernel)
-   r_n=cv2.filter2D(r,-1,kernel)
-   f=0.6
-   B=b-f*b_n
-   G=g-f*g_n
-   R=r-f*r_n
-   n_image=cv2.merge([B,G,R])+20
-   return n_image.astype(np.uint8)
-def invert(imagem):
- imagem = (255-imagem)
- return imagem
+def colorize(image):
+    image_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    image_scaled=image/255
+    image_gray_scaled=image_gray/255
+    average_brightness=np.average(image_gray_scaled)
+    gamma=-0.3/np.log10(average_brightness)
+    colorized_image_scaled=image_scaled**gamma
+    colorized_image=np.clip(colorized_image_scaled*255,0,255).astype(np.uint8)
+    return colorized_image
 
 
-new_image=colorize(img2,118/100,11,15)##obtenemos imagen con brillo y contraste modificados
+new_image=colorize(img2)##obtenemos imagen con modificación de gamma automática
 cv2.imwrite('/tmp/images/1549138022.jpg',new_image)
 kernel=cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(4,4))
 mask = create_mask(new_image, np.array([50, 110, 60]), np.array([80, 255, 255]))
