@@ -73,91 +73,94 @@ radios=[]
 for cl in PD.plant_db.coordinate_locations:
   radios.append(cl[2])
 suma_radios=sum(radios)
+try:
+  if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
+    #O=len(PD.plant_db.coordinate_locations)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    matrix=np.load(dir_path+'/'+'array1.npy')
+    matrix2=np.load(dir_path+'/'+'array2.npy')
+    matrix3=np.load(dir_path+'/'+'array3.npy')
+    matrix4=np.load(dir_path+'/'+'array4.npy')
+    for coordinate_location in PD.plant_db.coordinate_locations:
+          log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
+                      coordinate_location[0],
+                      coordinate_location[1],
+                      coordinate_location[2]))
+    send_message(message='TUDO BEM', message_type='success', channel='toast')
+    CeleryPy.move_absolute(weeder,(0,0,0),150)
+    CeleryPy.move_absolute(weeder,(100,0,0),150)
+    CeleryPy.move_absolute(weeder,(100,0,100),150)
+    CeleryPy.move_absolute(weeder,(100,0,200),150)
+    CeleryPy.write_pin(number=4, value=1, mode=0)
+    CeleryPy.wait(100)
+    CeleryPy.write_pin(number=4, value=0, mode=0)
+    CeleryPy.wait(200)
+    CeleryPy.write_pin(number=4, value=1, mode=0)
 
-if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
-  #O=len(PD.plant_db.coordinate_locations)
-  dir_path = os.path.dirname(os.path.realpath(__file__))
-  matrix=np.load(dir_path+'/'+'array1.npy')
-  matrix2=np.load(dir_path+'/'+'array2.npy')
-  matrix3=np.load(dir_path+'/'+'array3.npy')
-  matrix4=np.load(dir_path+'/'+'array4.npy')
-  for coordinate_location in PD.plant_db.coordinate_locations:
-        log("Plant detected at X = {:5.0f} mm, Y = {:5.0f} mm with R = {:.1f} mm".format(
-                    coordinate_location[0],
-                    coordinate_location[1],
-                    coordinate_location[2]))
-  send_message(message='TUDO BEM', message_type='success', channel='toast')
-  CeleryPy.move_absolute(weeder,(0,0,0),150)
-  CeleryPy.move_absolute(weeder,(100,0,0),150)
-  CeleryPy.move_absolute(weeder,(100,0,100),150)
-  CeleryPy.move_absolute(weeder,(100,0,200),150)
-  CeleryPy.write_pin(number=4, value=1, mode=0)
-  CeleryPy.wait(100)
-  CeleryPy.write_pin(number=4, value=0, mode=0)
-  CeleryPy.wait(200)
-  CeleryPy.write_pin(number=4, value=1, mode=0)
-  
-  for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
-    if coordinate_location[2] > 15.0 and coordinate_location[2]<42.0:
-          aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
-          (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
-          log(str(min))
-          xmat=minloc[0]-1
-          ymat=minloc[1]-1
-          xmatsig=int(np.clip(i%2,0,10))
-          ymatsig=int(np.clip((i-xmatsig)/2,0,10))
-          x,y=matrix[ymat,xmat]
-          if i%3==0:
-            xsig,ysig=matrix2[ymatsig,xmatsig]
-            xsig=xsig-4
-            ysig=ysig+3
-          elif i%3==1:
-            xsig,ysig=matrix3[ymatsig,xmatsig]
-            xsig=xsig-4
-            ysig=ysig+3
-          elif i%3==2:
-            xsig,ysig=matrix4[ymatsig,xmatsig]
-            xsig=xsig-4
-            ysig=ysig+3
-          x=x-7
-          y=y+7
-          CeleryPy.move_absolute((x-22,y-10,-205),(0,0,0),100)
-          CeleryPy.move_absolute((x-22,y-10,-270),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-270),(0,0,0),100)
-          #CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
-          CeleryPy.move_absolute((x,y,-291),(0,0,0),100)
-          CeleryPy.wait(500)
-          CeleryPy.write_pin(number=4, value=0, mode=0)
-          CeleryPy.wait(2000)
-          CeleryPy.move_absolute((x,y,-215),(0,0,0),100)
-          CeleryPy.wait(500)
-          CeleryPy.move_absolute((xsig,ysig,-160),(0,0,0),100)
-          CeleryPy.move_absolute((xsig,ysig,-278),(0,0,0),100)
-          CeleryPy.write_pin(number=4, value=1, mode=0)
-          CeleryPy.wait(400)
-          CeleryPy.write_pin(number=4, value=0, mode=0)
-          CeleryPy.wait(400)
-          CeleryPy.write_pin(number=4, value=1, mode=0)
-          CeleryPy.wait(400)
-          CeleryPy.write_pin(number=4, value=0, mode=0)
-          CeleryPy.wait(400)
-          CeleryPy.write_pin(number=4, value=1, mode=0)
-          CeleryPy.move_absolute((xsig,ysig,-205),(0,0,0),100)
-          CeleryPy.write_pin(number=4, value=0, mode=0)
-          CeleryPy.wait(200)
-          CeleryPy.write_pin(number=4, value=1, mode=0)
-          CeleryPy.wait(200)
-          CeleryPy.write_pin(number=4, value=0, mode=0)
-          CeleryPy.wait(200)
-          CeleryPy.write_pin(number=4, value=1, mode=0)
-          CeleryPy.wait(500)
-  CeleryPy.move_absolute(weeder,(120,0,200),150)
-  CeleryPy.move_absolute(weeder,(120,0,0),150)
-  CeleryPy.move_absolute(weeder,(0,0,0),150)
-  CeleryPy.move_absolute(weeder,(0,0,200),150)
-else:
+    for i,coordinate_location in enumerate(PD.plant_db.coordinate_locations):
+      if coordinate_location[2] > 15.0 and coordinate_location[2]<42.0:
+            aux=np.abs(coordinate_location[0]-matrix[:,:,0])+np.abs(coordinate_location[1]-matrix[:,:,1])
+            (min,_,minloc,_)=cv2.minMaxLoc(aux,None)
+            log(str(min))
+            xmat=minloc[0]-1
+            ymat=minloc[1]-1
+            xmatsig=int(np.clip(i%2,0,10))
+            ymatsig=int(np.clip((i-xmatsig)/2,0,10))
+            x,y=matrix[ymat,xmat]
+            if i%3==0:
+              xsig,ysig=matrix2[ymatsig,xmatsig]
+              xsig=xsig-4
+              ysig=ysig+3
+            elif i%3==1:
+              xsig,ysig=matrix3[ymatsig,xmatsig]
+              xsig=xsig-4
+              ysig=ysig+3
+            elif i%3==2:
+              xsig,ysig=matrix4[ymatsig,xmatsig]
+              xsig=xsig-4
+              ysig=ysig+3
+            x=x-7
+            y=y+7
+            CeleryPy.move_absolute((x-22,y-10,-205),(0,0,0),100)
+            CeleryPy.move_absolute((x-22,y-10,-270),(0,0,0),100)
+            CeleryPy.move_absolute((x,y,-270),(0,0,0),100)
+            #CeleryPy.move_absolute((x,y,-205),(0,0,0),100)
+            CeleryPy.move_absolute((x,y,-291),(0,0,0),100)
+            CeleryPy.wait(500)
+            CeleryPy.write_pin(number=4, value=0, mode=0)
+            CeleryPy.wait(2000)
+            CeleryPy.move_absolute((x,y,-215),(0,0,0),100)
+            CeleryPy.wait(500)
+            CeleryPy.move_absolute((xsig,ysig,-160),(0,0,0),100)
+            CeleryPy.move_absolute((xsig,ysig,-278),(0,0,0),100)
+            CeleryPy.write_pin(number=4, value=1, mode=0)
+            CeleryPy.wait(400)
+            CeleryPy.write_pin(number=4, value=0, mode=0)
+            CeleryPy.wait(400)
+            CeleryPy.write_pin(number=4, value=1, mode=0)
+            CeleryPy.wait(400)
+            CeleryPy.write_pin(number=4, value=0, mode=0)
+            CeleryPy.wait(400)
+            CeleryPy.write_pin(number=4, value=1, mode=0)
+            CeleryPy.move_absolute((xsig,ysig,-205),(0,0,0),100)
+            CeleryPy.write_pin(number=4, value=0, mode=0)
+            CeleryPy.wait(200)
+            CeleryPy.write_pin(number=4, value=1, mode=0)
+            CeleryPy.wait(200)
+            CeleryPy.write_pin(number=4, value=0, mode=0)
+            CeleryPy.wait(200)
+            CeleryPy.write_pin(number=4, value=1, mode=0)
+            CeleryPy.wait(500)
+    CeleryPy.move_absolute(weeder,(120,0,200),150)
+    CeleryPy.move_absolute(weeder,(120,0,0),150)
+    CeleryPy.move_absolute(weeder,(0,0,0),150)
+    CeleryPy.move_absolute(weeder,(0,0,200),150)
+  else:
+    send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
+  CeleryPy.move_absolute((0,0,0),(0,0,0),250)
+except:
   send_message(message='NINGUN PLANTIN DETECTADO', message_type='error', channel='toast')
-CeleryPy.move_absolute((0,0,0),(0,0,0),250)
+  CeleryPy.move_absolute((0,0,0),(0,0,0),250)
   #CeleryPy.move_absolute((500,500,0),(0,0,0),100)
   #CeleryPy.move_absolute((0,0,0),(0,0,0),100)
 
