@@ -1,13 +1,13 @@
 
 {
- "package": "LOGGING",
+ "package": "Programa_de_selección_de_plantines",
  "language": "python",
  "author": "Paulo Linares",
  "description": "Basics movements",
  "version": "1.0.0",
  "min_os_version_major": 6,
- "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/manifest.json",
+ "url": "https://raw.githubusercontent.com/Vegnics/calibrate_camera/master/Script_principal.json",
  "zip": "https://github.com/Vegnics/calibrate_camera/archive/master.zip",
  "executable": "python",
- "args": ["calibrate_camera-master/cam_cal_script.py"]
+ "args": ["calibrate_camera-master/Script_principal.py"]
 }
