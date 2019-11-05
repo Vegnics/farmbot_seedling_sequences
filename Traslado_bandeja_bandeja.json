@@ -11,6 +11,6 @@
  "args": ["calibrate_camera-master/Traslado_bandeja_bandeja.py"],
  "config": [
     {"name": "Origin_tray", "label": "BANDEJA DE ORIGEN (1 - 4)", "value": 1 },
-    {"name": "Destiny_tray", "label": "BANDEJA DE DESTINO 1 (1 - 4)", "value": 2 },
+    {"name": "Destiny_tray", "label": "BANDEJA DE DESTINO 1 (1 - 4)", "value": 2 }
   ]
 } 
