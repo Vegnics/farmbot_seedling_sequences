@@ -70,11 +70,14 @@ PD = PlantDetection(
             )
 PD.detect_plants()
 radios=[]
+radios_counter=0
 for cl in PD.plant_db.coordinate_locations:
-  radios.append(cl[2])
+  if cl[2]>12.0:
+    radios.append(cl[2])
+    radios_counter=radios_counter + 1
 suma_radios=sum(radios)
 try:
-  if suma_radios/len(PD.plant_db.coordinate_locations) >=15.0:
+  if suma_radios/radios_counter >=15.0:
     #O=len(PD.plant_db.coordinate_locations)
     dir_path = os.path.dirname(os.path.realpath(__file__))
     matrix=np.load(dir_path+'/'+'array1.npy')
