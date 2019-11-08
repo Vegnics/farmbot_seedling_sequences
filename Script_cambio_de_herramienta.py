@@ -8,10 +8,10 @@ import CeleryPy
 
 
 device.set_pin_io_mode(1,4)
-weeder=(20,553,-402)
-herramienta_2=(20,453,-402)
-herramienta_3=(20,353,-402)
-central_position=(500,440,-260)
+weeder=(20,553+4,-402)
+herramienta_2=(20,453+4,-402)
+herramienta_3=(20,353+4,-402)
+central_position=(500,440+4,-260)
 send_message(message='Iniciando secuencia de cambio de herramientas', message_type='warn', channel='toast')
 CeleryPy.move_absolute(weeder,(0,0,0),150)
 CeleryPy.move_absolute(weeder,(100,0,0),150)
