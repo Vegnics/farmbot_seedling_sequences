@@ -18,7 +18,7 @@ import time
 #x=DB()
 #y=x.get_image(95)
 device.set_pin_io_mode(1,4)
-weeder=(20,553+4,-402)
+weeder=(20,553,-402)
 CeleryPy.move_absolute((500,440,0),(0,0,0),150)
 #send_message(message=str(os.environ), message_type='success', channel='toast')
 file=Capture().capture()
