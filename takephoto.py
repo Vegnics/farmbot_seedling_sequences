@@ -8,10 +8,10 @@ def usb_camera_photo():
     max_port_num = 1     # highest port to try if not detected on port
     discard_frames = 10  # number of frames to discard for auto-adjust
     max_attempts = 5     # number of failed discard frames before quit
+    log("all ok")
     image_width = int(1600)
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
-    log("all ok")
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,1600)
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,1200)
     cam.set(cv2.CAP_PROP_BRIGHTNESS,-8)
