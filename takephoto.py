@@ -1,4 +1,3 @@
-from farmware_tools import device
 from CeleryPy import log
 from time import time
 import cv2
@@ -12,6 +11,7 @@ def usb_camera_photo():
     image_width = int(1600)
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
+    log("all ok")
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,1600)
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,1200)
     cam.set(cv2.CAP_PROP_BRIGHTNESS,-8)
