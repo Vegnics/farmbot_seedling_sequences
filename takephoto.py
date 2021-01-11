@@ -1,4 +1,7 @@
 from farmware_tools import device
+from CeleryPy import log
+from time import time
+
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
     camera_port = 0      # default USB camera port
@@ -23,9 +26,11 @@ def usb_camera_photo():
         sleep(0.1)
 
     # Take a photo
-    farmwa
     ret, image = cam.read()
-    
-
+    directory = '/tmp/images/'
+    image_filename = directory +  '{timestamp}.jpg'.format(timestamp=int(time()))
+    cv2.imwrite(image_filename,image)
     # Close the camera
     cam.release()
+
+usb_camera_photo()
