@@ -1,6 +1,7 @@
 from farmware_tools import device
 from CeleryPy import log
 from time import time
+import cv2
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
