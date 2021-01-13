@@ -1,6 +1,7 @@
-from CeleryPy import log
-from time import time
+from CeleryPy import send_message
+from time import time,sleep
 import cv2
+send_message(message='libraries ok', message_type='success', channel='toast')
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
@@ -8,7 +9,6 @@ def usb_camera_photo():
     max_port_num = 1     # highest port to try if not detected on port
     discard_frames = 10  # number of frames to discard for auto-adjust
     max_attempts = 5     # number of failed discard frames before quit
-    log("all ok")
     image_width = int(1600)
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
@@ -18,7 +18,7 @@ def usb_camera_photo():
     cam.set(cv2.CAP_PROP_CONTRAST,-3)
     cam.set(cv2.CAP_PROP_SATURATION,7)
     cam.set(cv2.CAP_PROP_HUE,-100)
-    for _ in range(10):
+    for a in range(10):
         if not camera.grab():
             verbose_log('Could not get frame.')
             failed_attempts += 1
