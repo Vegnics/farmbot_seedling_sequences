@@ -35,3 +35,4 @@ def usb_camera_photo():
     cam.release()
 
 usb_camera_photo()
+send_message(message='finish ok', message_type='success', channel='toast')
