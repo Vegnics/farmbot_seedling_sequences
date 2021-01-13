@@ -8,5 +8,5 @@
  "url": "https://raw.githubusercontent.com/Vegnics/farmbot_seedling_sequences/master/takephoto_json.json",
  "zip": "https://github.com/Vegnics/farmbot_seedling_sequences/archive/master.zip",
  "executable": "python",
- "args": ["farmbot_seedling_sequences/takephoto.py"]
+ "args": ["farmbot_seedling_sequences-master/takephoto.py"]
 }
