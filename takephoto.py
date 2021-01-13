@@ -3,7 +3,6 @@ from time import time,sleep
 import cv2
 send_message(message='libraries ok', message_type='success', channel='toast')
 
-"""
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
     camera_port = 0      # default USB camera port
@@ -36,4 +35,3 @@ def usb_camera_photo():
     cam.release()
 
 usb_camera_photo()
-"""
