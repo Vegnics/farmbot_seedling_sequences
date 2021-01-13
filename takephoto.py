@@ -1,7 +1,7 @@
-#from CeleryPy import send_message
+from CeleryPy import send_message
 from time import time,sleep
-#import cv2
-#send_message(message='libraries ok', message_type='success', channel='toast')
+import cv2
+send_message(message='libraries ok', message_type='success', channel='toast')
 
 """
 def usb_camera_photo():
