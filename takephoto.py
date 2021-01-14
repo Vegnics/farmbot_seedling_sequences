@@ -5,15 +5,13 @@ import cv2
 
 send_message(message='libraries ok', message_type='success', channel='toast')
 fw_name="Taking_photo"
-try:
-    width = get_config_value(fw_name,config_name="width")
-    height = get_config_value(fw_name,config_name="height")
-    bright = get_config_value(fw_name,config_name="bright")
-    contrast = get_config_value(fw_name,config_name="contrast")
-    saturation = get_config_value(fw_name,config_name="sat")
-    hue = get_config_value(fw_name,config_name="hue")
-except:
-    send_message(message='reading bad', message_type='error', channel='toast')
+width = get_config_value(fw_name,config_name="width")
+height = get_config_value(fw_name,config_name="height")
+bright = get_config_value(fw_name,config_name="bright")
+contrast = get_config_value(fw_name,config_name="contrast")
+saturation = get_config_value(fw_name,config_name="sat")
+hue = get_config_value(fw_name,config_name="hue")
+send_message(message='reading ok', message_type='success', channel='toast')
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
@@ -21,7 +19,6 @@ def usb_camera_photo():
     max_port_num = 1     # highest port to try if not detected on port
     discard_frames = 10  # number of frames to discard for auto-adjust
     max_attempts = 5     # number of failed discard frames before quit
-    send_message(message='reading ok', message_type='success', channel='toast')
     cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,640)#640
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,480)#480
