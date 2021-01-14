@@ -18,6 +18,7 @@ def usb_camera_photo():
     cam.set(cv2.CAP_PROP_CONTRAST,-3)
     cam.set(cv2.CAP_PROP_SATURATION,7)
     cam.set(cv2.CAP_PROP_HUE,-100)
+    send_message(message='point1_ok', message_type='success', channel='toast')
     for a in range(10):
         if not camera.grab():
             verbose_log('Could not get frame.')
@@ -25,7 +26,8 @@ def usb_camera_photo():
         if failed_attempts >= max_attempts:
             break
         sleep(0.1)
-
+        
+    send_message(message='point2_ok', message_type='success', channel='toast')
     # Take a photo
     ret, image = cam.read()
     directory = '/tmp/images/'
