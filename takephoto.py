@@ -3,7 +3,7 @@ from CeleryPy import send_message
 from time import time,sleep
 import cv2
 send_message(message='libraries ok', message_type='success', channel='toast')
-fw_name=" "
+fw_name="Taking_photo"
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
