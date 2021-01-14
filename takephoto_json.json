@@ -10,6 +10,11 @@
  "executable": "python",
  "args": ["farmbot_seedling_sequences-master/takephoto.py"],
  "config": [
-    {"name": "width", "label": "width","value": 640}
+    {"name": "width", "label": "width","value": 640},
+    {"name": "height", "label": "height","value": 480},
+    {"name": "bright", "label": "brightness","value": 0.5},
+    {"name": "contrast", "label": "contrast","value": 0.73333},
+    {"name": "sat", "label": "saturation","value": 0.3543},
+    {"name": "hue", "label": "hue","value": 0.5}
  ]
 }
