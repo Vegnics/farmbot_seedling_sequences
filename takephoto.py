@@ -23,7 +23,7 @@ def usb_camera_photo():
     cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,640)#640
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,480)#480
-    cam.set(cv2.CAP_PROP_BRIGHTNESS,0.5#0.5
+    cam.set(cv2.CAP_PROP_BRIGHTNESS,0.5)#0.5
     cam.set(cv2.CAP_PROP_CONTRAST,0.73333)#0.733333
     cam.set(cv2.CAP_PROP_SATURATION,0.3543)#0.3543
     cam.set(cv2.CAP_PROP_HUE,0.5)#0.5
