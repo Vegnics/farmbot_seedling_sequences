@@ -14,43 +14,28 @@
       "name": "width",
       "label": "width",
       "value": 640
-    }
-  },
-
-"config": {
-    "2": {
+    },
+  "2": {
       "name": "height",
       "label": "height",
       "value": 480
-    }
-  },
-
-"config": {
-    "3": {
+    },
+  "3": {
       "name": "bright",
       "label": "bright",
       "value": 0.5
-    }
-  },
-
-"config": {
-    "4": {
+    },
+  "4": {
       "name": "contrast",
       "label": "contrast",
       "value": 0.73333
-    }
-  },
-
-"config": {
-    "5": {
+    },
+  "5": {
       "name": "sat",
       "label": "saturation",
       "value": 0.3543
-    }
-  },
-
-"config": {
-    "6": {
+    },
+  "6": {
       "name": "hue",
       "label": "hue",
       "value": 0.5
