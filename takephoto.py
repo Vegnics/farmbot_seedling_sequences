@@ -5,12 +5,15 @@ import cv2
 
 send_message(message='libraries ok', message_type='success', channel='toast')
 fw_name="Taking_photo"
-width = get_config_value(fw_name,config_name="width")
-height = get_config_value(fw_name,config_name="height")
-bright = get_config_value(fw_name,config_name="bright")
-contrast = get_config_value(fw_name,config_name="contrast")
-saturation = get_config_value(fw_name,config_name="sat")
-hue = get_config_value(fw_name,config_name="hue")
+try:
+    width = get_config_value(fw_name,config_name="width")
+    height = get_config_value(fw_name,config_name="height")
+    bright = get_config_value(fw_name,config_name="bright")
+    contrast = get_config_value(fw_name,config_name="contrast")
+    saturation = get_config_value(fw_name,config_name="sat")
+    hue = get_config_value(fw_name,config_name="hue")
+except:
+    send_message(message='reading bad', message_type='error', channel='toast')
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
