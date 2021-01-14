@@ -1,7 +1,9 @@
+from farmware_tools import get_config_value
 from CeleryPy import send_message
 from time import time,sleep
 import cv2
 send_message(message='libraries ok', message_type='success', channel='toast')
+fw_name=" "
 
 def usb_camera_photo():
     #'Take a photo using a USB camera.'#
@@ -12,12 +14,12 @@ def usb_camera_photo():
     image_width = int(1600)
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
-    cam.set(cv2.CAP_PROP_FRAME_WIDTH,640)#640
-    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,480)#480
-    cam.set(cv2.CAP_PROP_BRIGHTNESS,0.4)#0.5
-    cam.set(cv2.CAP_PROP_CONTRAST,0.73333)#0.733333
-    cam.set(cv2.CAP_PROP_SATURATION,0.3543)#
-    cam.set(cv2.CAP_PROP_HUE,0.5)#-100
+    cam.set(cv2.CAP_PROP_FRAME_WIDTH,get_config_value(fw_name,"width"))#640
+    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,get_config_value(fw_name,"height"))#480
+    cam.set(cv2.CAP_PROP_BRIGHTNESS,get_config_value(fw_name,"bright"))#0.5
+    cam.set(cv2.CAP_PROP_CONTRAST,get_config_value(fw_name,"contrast"))#0.733333
+    cam.set(cv2.CAP_PROP_SATURATION,get_config_value(fw_name,"sat"))#0.3543
+    cam.set(cv2.CAP_PROP_HUE,get_config_value(fw_name,"hue"))#0.5
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_WIDTH)), message_type='success', channel='toast')
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_HEIGHT)), message_type='success', channel='toast')
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_BRIGHTNESS)), message_type='success', channel='toast')
