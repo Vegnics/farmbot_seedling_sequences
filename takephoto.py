@@ -15,11 +15,12 @@ def usb_camera_photo():
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,get_config_value(fw_name,config_name="width"))#640
-    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,get_config_value(fw_name,"height"))#480
-    cam.set(cv2.CAP_PROP_BRIGHTNESS,get_config_value(fw_name,"bright"))#0.5
-    cam.set(cv2.CAP_PROP_CONTRAST,get_config_value(fw_name,"contrast"))#0.733333
-    cam.set(cv2.CAP_PROP_SATURATION,get_config_value(fw_name,"sat"))#0.3543
-    cam.set(cv2.CAP_PROP_HUE,get_config_value(fw_name,"hue"))#0.5
+    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,get_config_value(fw_name,config_name="height"))#480
+    cam.set(cv2.CAP_PROP_BRIGHTNESS,get_config_value(fw_name,config_name="bright"))#0.5
+    cam.set(cv2.CAP_PROP_CONTRAST,get_config_value(fw_name,config_name="contrast"))#0.733333
+    cam.set(cv2.CAP_PROP_SATURATION,get_config_value(fw_name,config_name="sat"))#0.3543
+    cam.set(cv2.CAP_PROP_HUE,get_config_value(fw_name,config_name="hue"))#0.5
+    send_message(message='setting ok', message_type='success', channel='toast')
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_WIDTH)), message_type='success', channel='toast')
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_HEIGHT)), message_type='success', channel='toast')
     #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_BRIGHTNESS)), message_type='success', channel='toast')
