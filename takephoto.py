@@ -12,18 +12,18 @@ def usb_camera_photo():
     image_width = int(1600)
     image_height = int(1200)
     cam = cv2.VideoCapture(0)
-    #cam.set(cv2.CAP_PROP_FRAME_WIDTH,1600)
-    #cam.set(cv2.CAP_PROP_FRAME_HEIGHT,1200)
-    #cam.set(cv2.CAP_PROP_BRIGHTNESS,0)#-8
-    #cam.set(cv2.CAP_PROP_CONTRAST,0)#-3
-    #cam.set(cv2.CAP_PROP_SATURATION,0)#7
-    #cam.set(cv2.CAP_PROP_HUE,0)#-100
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_WIDTH)), message_type='success', channel='toast')
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_HEIGHT)), message_type='success', channel='toast')
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_BRIGHTNESS)), message_type='success', channel='toast')
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_CONTRAST)), message_type='success', channel='toast')
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_SATURATION)), message_type='success', channel='toast')
-    send_message(message='{}'.format(cam.get(cv2.CAP_PROP_HUE)), message_type='success', channel='toast')
+    cam.set(cv2.CAP_PROP_FRAME_WIDTH,640)#640
+    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,480)#480
+    cam.set(cv2.CAP_PROP_BRIGHTNESS,0.4)#0.5
+    cam.set(cv2.CAP_PROP_CONTRAST,0.73333)#0.733333
+    cam.set(cv2.CAP_PROP_SATURATION,0.3543)#
+    cam.set(cv2.CAP_PROP_HUE,0.5)#-100
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_WIDTH)), message_type='success', channel='toast')
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_FRAME_HEIGHT)), message_type='success', channel='toast')
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_BRIGHTNESS)), message_type='success', channel='toast')
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_CONTRAST)), message_type='success', channel='toast')
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_SATURATION)), message_type='success', channel='toast')
+    #send_message(message='{}'.format(cam.get(cv2.CAP_PROP_HUE)), message_type='success', channel='toast')
     failed_attempts = 0
     max_attempts = 5
     
