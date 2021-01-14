@@ -10,9 +10,6 @@
  "executable": "python",
  "args": ["farmbot_seedling_sequences-master/takephoto.py"],
  "config": [
-    {
-      "name": "width",
-      "label": "width",
-      "value": 640
-    }]
+    {"name": "width", "label": "width","value": 640}
+ ]
 }
