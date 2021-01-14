@@ -11,11 +11,11 @@ def usb_camera_photo():
     max_port_num = 1     # highest port to try if not detected on port
     discard_frames = 10  # number of frames to discard for auto-adjust
     max_attempts = 5     # number of failed discard frames before quit
-    image_width = int(1600)
-    image_height = int(1200)
+    width = int(get_config_value(fw_name,config_name="width"))
+    height = int(get_config_value(fw_name,config_name="height"))
     cam = cv2.VideoCapture(0)
-    cam.set(cv2.CAP_PROP_FRAME_WIDTH,get_config_value(fw_name,config_name="width"))#640
-    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,get_config_value(fw_name,config_name="height"))#480
+    cam.set(cv2.CAP_PROP_FRAME_WIDTH,width)#640
+    cam.set(cv2.CAP_PROP_FRAME_HEIGHT,height)#480
     cam.set(cv2.CAP_PROP_BRIGHTNESS,get_config_value(fw_name,config_name="bright"))#0.5
     cam.set(cv2.CAP_PROP_CONTRAST,get_config_value(fw_name,config_name="contrast"))#0.733333
     cam.set(cv2.CAP_PROP_SATURATION,get_config_value(fw_name,config_name="sat"))#0.3543
