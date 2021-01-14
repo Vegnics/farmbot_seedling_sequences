@@ -14,7 +14,7 @@ def usb_camera_photo():
     cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,1600)
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,1200)
-    cam.set(cv2.CAP_PROP_BRIGHTNESS,-8)
+    cam.set(cv2.CAP_PROP_BRIGHTNESS,0)#-8
     cam.set(cv2.CAP_PROP_CONTRAST,-3)
     cam.set(cv2.CAP_PROP_SATURATION,7)
     cam.set(cv2.CAP_PROP_HUE,-100)
@@ -22,7 +22,7 @@ def usb_camera_photo():
     failed_attempts = 0
     max_attempts = 5
     
-    for a in range(10):
+    for a in range(20):
         if not cam.grab():
             #verbose_log('Could not get frame.')
             failed_attempts += 1
