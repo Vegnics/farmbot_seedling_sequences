@@ -9,4 +9,51 @@
  "zip": "https://github.com/Vegnics/farmbot_seedling_sequences/archive/master.zip",
  "executable": "python",
  "args": ["farmbot_seedling_sequences-master/takephoto.py"]
+ "config": {
+    "1": {
+      "name": "width",
+      "label": "width",
+      "value": 640
+    }
+  }
+
+"config": {
+    "2": {
+      "name": "height",
+      "label": "height",
+      "value": 480
+    }
+  }
+
+"config": {
+    "3": {
+      "name": "bright",
+      "label": "bright",
+      "value": 0.5
+    }
+  }
+
+"config": {
+    "4": {
+      "name": "contrast",
+      "label": "contrast",
+      "value": 0.73333
+    }
+  }
+
+"config": {
+    "5": {
+      "name": "sat",
+      "label": "saturation",
+      "value": 0.3543
+    }
+  }
+
+"config": {
+    "6": {
+      "name": "hue",
+      "label": "hue",
+      "value": 0.5
+    }
+  }
 }
