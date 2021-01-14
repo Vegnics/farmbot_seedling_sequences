@@ -15,14 +15,15 @@ def usb_camera_photo():
     cam.set(cv2.CAP_PROP_FRAME_WIDTH,1600)
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT,1200)
     cam.set(cv2.CAP_PROP_BRIGHTNESS,0)#-8
-    cam.set(cv2.CAP_PROP_CONTRAST,-3)
-    cam.set(cv2.CAP_PROP_SATURATION,7)
-    cam.set(cv2.CAP_PROP_HUE,-10)#-100
+    cam.set(cv2.CAP_PROP_CONTRAST,0)#-3
+    cam.set(cv2.CAP_PROP_SATURATION,0)#7
+    cam.set(cv2.CAP_PROP_HUE,0)#-100
     send_message(message='point1_ok', message_type='success', channel='toast')
     failed_attempts = 0
     max_attempts = 5
     
     for a in range(20):
+        ret,image = cam.read()
         if not cam.grab():
             #verbose_log('Could not get frame.')
             failed_attempts += 1
