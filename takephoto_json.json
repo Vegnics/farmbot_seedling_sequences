@@ -9,6 +9,7 @@
  "zip": "https://github.com/Vegnics/farmbot_seedling_sequences/archive/master.zip",
  "executable": "python",
  "args": ["farmbot_seedling_sequences-master/takephoto.py"],
+ "farmware_tools_version": "v3.0.0",
  "config": [
     {"name": "width", "label": "width","value": 640},
     {"name": "height", "label": "height","value": 480},
