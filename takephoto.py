@@ -7,6 +7,8 @@ from numpy.fft import fft2,fftshift,ifft2,ifftshift
 
 device.log(message='libraries ok', message_type='success')
 fw_name="Taking_photo"
+dir_path = os.path.dirname(os.path.realpath(__file__))
+gauss_kernel = np.load(dir_path+'/'+'gauss_kernel.npy')
 
 
 def highpass_gaussian_kernel(size0,size1,sigma):
@@ -37,7 +39,8 @@ def homomorph_filter_N1(src,sigma):
     Ln_I = np.log(src + 1)
     I_fft = fft2(Ln_I)
     I_fft = fftshift(I_fft)
-    kernel = highpass_gaussian_kernel(I_fft.shape[0], I_fft.shape[1], sigma)
+    #kernel = highpass_gaussian_kernel(I_fft.shape[0], I_fft.shape[1], sigma)
+    kernel = gauss_kernel
     I_filt_fft = I_fft * kernel
     I_filt_fft_uns = ifftshift(I_filt_fft)
     I_filtered = np.real(ifft2(I_filt_fft_uns))
