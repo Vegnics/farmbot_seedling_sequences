@@ -2,13 +2,12 @@
 from time import time,sleep
 from farmware_tools import get_config_value,device
 import cv2
+import numpy as np
 from numpy.fft import fft2,fftshift,ifft2,ifftshift
 
 device.log(message='libraries ok', message_type='success')
 fw_name="Taking_photo"
 
-import numpy as np
-from numpy.fft import fft2,fftshift,ifft2,ifftshift
 
 def highpass_gaussian_kernel(size0,size1,sigma):
     kernel = np.zeros((size0,size1))
