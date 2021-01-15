@@ -7,6 +7,56 @@ from numpy.fft import fft2,fftshift,ifft2,ifftshift
 device.log(message='libraries ok', message_type='success')
 fw_name="Taking_photo"
 
+import numpy as np
+from numpy.fft import fft2,fftshift,ifft2,ifftshift
+
+def highpass_gaussian_kernel(size0,size1,sigma):
+    kernel = np.zeros((size0,size1))
+    for i in range(size0):
+        for j in range(size1):
+            kernel[i,j] = 1 - np.exp(-((i-int(size0/2))**2 + (j-int(size1/2))**2)/(2*sigma**2))
+    return kernel
+
+def lowpass_gaussian_kernel(size0,size1,sigma):
+    kernel = np.zeros((size0,size1))
+    for i in range(size0):
+        for j in range(size1):
+            kernel[i,j] = np.exp(-((i-int(size0/2))**2 + (j-int(size1/2))**2)/(2*sigma**2))
+    return kernel
+
+def remap(src,min,max):
+    max=np.max(src)
+    min=np.min(src)
+    output_img=(255/(max-min))*(src-min)
+    output_img=output_img
+    output_img = np.clip(output_img,0,255)
+    output_img = output_img.astype(np.uint8)
+    return output_img
+
+def homomorph_filter_N1(src,sigma):
+    src = src.astype(np.float32)
+    Ln_I = np.log(src + 1)
+    I_fft = fft2(Ln_I)
+    I_fft = fftshift(I_fft)
+    kernel = highpass_gaussian_kernel(I_fft.shape[0], I_fft.shape[1], sigma)
+    I_filt_fft = I_fft * kernel
+    I_filt_fft_uns = ifftshift(I_filt_fft)
+    I_filtered = np.real(ifft2(I_filt_fft_uns))
+    I_filtered = np.exp(I_filtered)
+    return I_filtered,np.min(I_filtered),np.max(I_filtered)
+
+def homomorph_filter_N3(src,sigma):
+    B, G, R = cv2.split(img_orig)
+    nB,minB,maxB = homomorph_filter_N1(B, sigma)
+    nG,minG,maxG = homomorph_filter_N1(G, sigma)
+    nR,minR,maxR = homomorph_filter_N1(R, sigma)
+    max=np.max([maxB,maxG,maxR])
+    min=np.min([minB,minG,minR])
+    nB=remap(nB,min,max)
+    nG = remap(nG, min, max)
+    nR = remap(nR, min, max)
+    return cv2.merge((nB,nG,nR))
+
 width = get_config_value(fw_name,config_name="width",value_type=int)
 height = get_config_value(fw_name,config_name="height",value_type=int)
 bright = get_config_value(fw_name,config_name="bright",value_type=int)
@@ -53,6 +103,13 @@ def usb_camera_photo():
     cv2.imwrite(image_filename,image)
     # Close the camera
     cam.release()
+    return image
 
-usb_camera_photo()
+
+img=usb_camera_photo()
+directory = '/tmp/images/'
+image_filename = directory +  '{timestamp}.jpg'.format(timestamp=int(time()))
+img_filter= homomorph_filter_N3(img,1.1)
+cv2.imwrite(image_filename,img_filter)
+
 device.log(message='finish ok', message_type='success')
