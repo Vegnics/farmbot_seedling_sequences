@@ -49,7 +49,7 @@ def homomorph_filter_N1(src,sigma):
     return I_filtered,np.min(I_filtered),np.max(I_filtered)
 
 def homomorph_filter_N3(src,sigma):
-    B, G, R = cv2.split(img_orig)
+    B, G, R = cv2.split(src)
     nB,minB,maxB = homomorph_filter_N1(B, sigma)
     nG,minG,maxG = homomorph_filter_N1(G, sigma)
     nR,minR,maxR = homomorph_filter_N1(R, sigma)
