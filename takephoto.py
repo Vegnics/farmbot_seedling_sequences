@@ -113,15 +113,15 @@ def usb_camera_photo():
 img=usb_camera_photo()
 directory = '/tmp/images/'
 image_filename = directory +  '{timestamp}.jpg'.format(timestamp=int(time()))
-img_filter= homomorph_filter_N3(img,1.1)
-img_filter_hsv = cv2.cvtColor(img_filter,cv2.COLOR_BGR2HSV)
-H=[27,100]
-S=[50,255]
-V=[32,255]
-mask = cv2.inRange(img_filter_hsv ,np.array([H[0],S[0],V[0]]),np.array([H[1],S[1],V[1]]))
-num_labels, labeled = cv2.connectedComponents(mask)
+#img_filter= homomorph_filter_N3(img,1.1)
+#img_filter_hsv = cv2.cvtColor(img_filter,cv2.COLOR_BGR2HSV)
+#H=[27,100]
+#S=[50,255]
+#V=[32,255]
+#mask = cv2.inRange(img_filter_hsv ,np.array([H[0],S[0],V[0]]),np.array([H[1],S[1],V[1]]))
+#num_labels, labeled = cv2.connectedComponents(mask)
 
 
-cv2.imwrite(image_filename,img_filter)
+#cv2.imwrite(image_filename,img_filter)
 
 device.log(message='finish ok', message_type='success')
